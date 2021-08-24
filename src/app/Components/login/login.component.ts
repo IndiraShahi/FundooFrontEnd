@@ -60,9 +60,9 @@ export class LoginComponent implements OnInit {
       
       this.Userservice.loginUser(reqData).subscribe(
         (response: any) => {
+          console.log(response.token)
           localStorage.setItem('FunDooJwt', response['token']);
           this.openSnackBar('Login success', 2000);
-         // this.route.navigate(['Dashboard']);
         },
         (error:any) => {
           try {

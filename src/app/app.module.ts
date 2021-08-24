@@ -20,6 +20,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
+import { DashboardComponent } from './Components/dashboard/dashboard/dashboard.component';
+import { GetallnotesComponent } from './Components/getallnotes/getallnotes/getallnotes.component';
+import { CreatenoteComponent } from './Components/createnote/createnote/createnote.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {MatCardModule} from '@angular/material/card';
     RegisterComponent,
     LoginComponent,
     ResetpasswordComponent,
-    ForgetpasswordComponent
+    ForgetpasswordComponent,
+    DashboardComponent,
+    GetallnotesComponent,
+    CreatenoteComponent
   ],
   imports: [
     BrowserModule,

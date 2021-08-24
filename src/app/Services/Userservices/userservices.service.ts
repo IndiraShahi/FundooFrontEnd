@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpservicesService } from '../Httpservices/httpservices.service';
 @Injectable({
@@ -14,8 +15,19 @@ export class UserservicesService {
     console.log(" login user services ", data );
     return this.http.Post('/User/Login', data,null,false);
   }
-}
+  forgetUser(data:any) {
+    console.log(" forget user services ", data );
+    return this.http.Post('/User/forgotpassword', data,null,false);
+  }
+  resetUser(token:any,data: any) {
+     
+    console.log("given data is", data);
+    
+    return this.http.put('/User/resetpassword', data, token, true);
+  }
+}  
   
+ 
   
 
   

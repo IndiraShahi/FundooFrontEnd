@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {
-  MatSnackBarConfig,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-  } from '@angular/material/snack-bar';
+import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
+import { UserservicesService } from 'src/app/Services/Userservices/userservices.service';
+import { MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBarConfig} from '@angular/material/snack-bar';
   
 @Component({
   selector: 'app-forgetpassword',
@@ -13,19 +10,19 @@ import {
   styleUrls: ['./forgetpassword.component.scss']
 })
 export class ForgetpasswordComponent implements OnInit {
-  public Email: string = '@gmail.com';
-  ForgetForm:FormGroup
+  forgetForm!: FormGroup;
+  submitted = false;
 
-  constructor(private formBuilder:FormBuilder, public snackBar: MatSnackBar ) {
-    this.ForgetForm = this.formBuilder.group(
-      {
-        Email: ['', Validators.required]
-      }
-    );   
-  } 
+  constructor(private formBuilder: FormBuilder , private user: UserservicesService,public snackBar:MatSnackBar ) { }
 
   ngOnInit(): void {
+    this.forgetForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
   }
+  // convenience getter for easy access to form fields
+  get f() { return this.forgetForm.controls; }
+
   openSnackBar(message: string, duration: number) {
     let config = new MatSnackBarConfig();
     if (duration != 0)
@@ -34,23 +31,25 @@ export class ForgetpasswordComponent implements OnInit {
     }
     this.snackBar.open(message, undefined, config);
   }
-  forget() {
-    
-    if(this.ForgetForm.valid){
-      this.openSnackBar('processing', 0); 
+  
+  onSubmit() {
+    if(this.forgetForm.valid){
+      this.openSnackBar('Processing', 2000); 
       let reqData ={
-        Email: this.ForgetForm.get('Email')?.value+this.Email,
+        Email: this.forgetForm.value.email
       }
-    }
-        (error:any) => {
+      this.user.forgetUser(reqData).subscribe(
+        (response: any) => {
+          this.openSnackBar('Password reset link has been sent to your Email', 2000);
+        },
+        error => {
           if(error['status'] == 0){
-            this.openSnackBar('Sending password reset link failed: server offline', 2000,);
+            this.openSnackBar('Sending password reset link failed: Server offline', 2000,);
           }
           else{
-            this.openSnackBar('Sending password reset link failed: '+error['error']['message'], 2000);
+            this.openSnackBar('Sending password reset link failed ', 2000);
           }
-        };
+        });
     } 
   }
-
-
+}
