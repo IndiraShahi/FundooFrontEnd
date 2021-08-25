@@ -23,6 +23,8 @@ import {MatCardModule} from '@angular/material/card';
 import { DashboardComponent } from './Components/dashboard/dashboard/dashboard.component';
 import { GetallnotesComponent } from './Components/getallnotes/getallnotes/getallnotes.component';
 import { CreatenoteComponent } from './Components/createnote/createnote/createnote.component';
+import { ReminderComponent } from './Components/Reminder/reminder/reminder.component';
+import { NotesComponent } from './Components/Notes/notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { CreatenoteComponent } from './Components/createnote/createnote/createno
     ForgetpasswordComponent,
     DashboardComponent,
     GetallnotesComponent,
-    CreatenoteComponent
+    CreatenoteComponent,
+    ReminderComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,

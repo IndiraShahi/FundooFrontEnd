@@ -9,7 +9,12 @@ export class HttpservicesService {
   https = new HttpHeaders();
   constructor(private http: HttpClient) { }
   Post(url:any,data:any,token:any,headers:boolean){
-    console.log(data,url);
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + token,
+        'Content-Type': 'application/json'
+      })
+    }
     return this.http.post(this.baseUrl + url, data);
   }
   Get(url: any, headers: any){
@@ -24,12 +29,7 @@ export class HttpservicesService {
         'Content-Type': 'application/json'
       })
     }
-      //  //passing token as headers
-      //  this.https.set("Authorization", "Bearer " + token);
-      //  //passing headers in json format
-      //  let HttpOutput = {
-      //    headers : this.https
-      //  }
+     
     console.log(data,url);
   
     //connection with backend 
