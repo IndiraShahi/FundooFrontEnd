@@ -1,64 +1,54 @@
 <div class="container">
-    <div class="child">
-      <div>
-        <span class="color-fundoo-F" style="color:#4285F4">F</span>
-        <span class="color-fundoo" style="color:#EA4335">u</span>
-        <span class="color-fundoo" style="color:#FBBC05">n</span>
-        <span class="color-fundoo" style="color:#4285F4">d</span>
-        <span class="color-fundoo" style="color:#34A853">o</span>
-        <span class="color-fundoo" style="color:#EA4335">o</span>
-      </div>
-       
-  
-    </div>
-    <div class="child signin">
-      <span>Sign in</span>
-    </div>
-    <div class="child use">
-      <span>Use your FunDooNotes Account</span>
-    </div>
     
-    <form [formGroup]="loginForm" class="child loginForm" (ngSubmit)="loginForm.valid && login()">
-     
-          <div class="email">
-            <mat-form-field class="user" appearance="outline">
-              <mat-label >Email</mat-label>
-              <input matInput placeholder="" formControlName="Email">
-              <span class="input-suffix" matSuffix >@gmail.com</span>
-              <mat-error *ngIf="loginForm.hasError('required', 'Email')">
-                *Required
-              </mat-error>
-              <mat-hint>You can use letters, numbers & periods</mat-hint>
-            </mat-form-field>
+  <div>
+      <p class="logo">
+          <span style="color:blue">F</span>
+          <span style="color:red">u</span>
+          <span style="color:yellow">n</span>
+          <span style="color : blue">d</span>
+          <span style="color:green">o</span>
+          <span style="color:red">o</span>
+      </p>
+
+      <p class="title">
+          Sign in
+      </p>
+
+      <p class="use-account">
+          Use your Fundoo Account
+      </p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="Login()">
+
+          <div>             
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Email or phone</mat-label>
+                <input matInput placeholder="" formControlName = "Email"/>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+              </div>                 
+              </mat-form-field>             
           </div>
-          <div class="password">
-            <mat-form-field class="pass" appearance="outline">
-              <mat-label >Password</mat-label>
-              <input type="password" id="password" type="{{ isActive ? 'password' : 'text' }}" matInput placeholder="" formControlName="Password">
-              <mat-error *ngIf="loginForm.hasError('required', 'Password')">
-                Please enter your password
-              </mat-error>
-              <mat-hint class="pass-hint"  >Use 8 or more characters with a mix of letters, numbers at least 1 uppercase, 1 digit & 1 symbol
-              </mat-hint>
-            </mat-form-field>          
+
+          <div>             
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="" formControlName = "Password"/>
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>                 
+              </mat-form-field>             
           </div>
-          <div class="Show-password">
-            <section class="example-section">
-              <mat-checkbox color="primary" (change)="TogglePassword()"  >Show password</mat-checkbox>
-            </section>
-        
+
+          <div>
+              <button mat-button class="forget-password-button" routerLink="/forgetpassword"><strong>Forget password</strong></button>                
           </div>
-     
-          <div class="btns">
-            <div class="create">
-            <a [routerLink]="['/register']" >
-            Create account
-            </a>
-            </div>
-            <div class="submit-btn">
-                <a [routerLink]="['/forgetpassword']" class="ahrefbutton">ForgetPassword </a>
-            <button type="submit" mat-raised-button >Login</button>
-            </div>
-         </div>
-    </form>
+
+          <div>        
+              <button mat-button class="create-account-button" routerLink="/register"><strong>Register</strong></button>                
+              <button mat-raised-button class="next-button" (click)="login()">Next</button>
+          </div>
+
+      </form>
   </div>
+</div>

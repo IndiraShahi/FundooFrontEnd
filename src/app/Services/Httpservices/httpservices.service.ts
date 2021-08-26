@@ -1,28 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpservicesService {
+
+
+  token: any;
   baseUrl = environment.Baseurl;
-  https = new HttpHeaders();
   constructor(private http: HttpClient) { }
-  Post(url:any,data:any,token:any,headers:boolean){
+
+
+  Post(url:any,data:any,token:any){
+    this.token=localStorage.getItem('FunDooJwt');
     let options = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + token,
         'Content-Type': 'application/json'
       })
     }
-    return this.http.post(this.baseUrl + url, data);
+    return this.http.post(this.baseUrl + url, data,options);
   }
-  Get(url: any, headers: any){
-    if(headers != null)
-    {return this.http.get(this.baseUrl + url, headers);}
+  Get(url: any,token: any,headers: boolean){
+    
     return this.http.get(this.baseUrl + url);
   }
-  put(url:any,data:any,token:any,headers:boolean){
+  GetallNotes(url: any) {
+    let token = localStorage.getItem('FunDooJwt');
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + token,
+        'Content-Type': 'application/json'
+      })
+    }
+    return this.http.get(this.baseUrl+url,options);
+  }
+  put(url:any,data:any,token:any){
     let options = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + token,
@@ -35,6 +50,16 @@ export class HttpservicesService {
     //connection with backend 
     return this.http.put(this.baseUrl + url, data,options);
   }
-  Delete(){}
+  delete(id: any){
+    let token = localStorage.getItem('Token');
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + token,
+        'Content-Type': 'application/json'
+      }),
+    }
+    return this.http.delete(this.baseUrl + 'Notes?notesId='+ id, options);
   }
+  }
+  
   

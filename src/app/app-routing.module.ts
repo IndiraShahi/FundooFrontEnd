@@ -7,15 +7,18 @@ import { RegisterComponent } from './Components/register/register.component';
 import { DashboardComponent } from './Components/dashboard/dashboard/dashboard.component';
 import { NotesComponent } from './Components/Notes/notes/notes.component';
 import { ReminderComponent } from './Components/Reminder/reminder/reminder.component';
+import { AuthguardGuard } from './authguard.guard';
+import { AuthguardservicesService } from './authguardservices.service';
 const routes: Routes = [
-{ path: 'login', component: LoginComponent },
+
 { path: 'register', component: RegisterComponent },
 { path: 'forgetpassword', component: ForgetpasswordComponent },
 { path: 'resetpassword/:token', component: ResetpasswordComponent },
-
-{ path: 'allnotes', component: NotesComponent },
+{ path: '', redirectTo: "login", pathMatch: "full" },
+{ path: 'login', component: LoginComponent },
+//{ path: 'allnotes', component: NotesComponent },
 {
-  path: 'dashboard', component: DashboardComponent,
+  path: 'dashboard', component: DashboardComponent,  
   children: [
 
     { path: '', redirectTo: "notes", pathMatch: "full" },
@@ -23,7 +26,7 @@ const routes: Routes = [
     { path: 'Reminder', component: ReminderComponent },
   ]
 },
-{ path: '', redirectTo: "login", pathMatch: "full" },
+
 ];
 
 @NgModule({

@@ -25,7 +25,8 @@ import { GetallnotesComponent } from './Components/getallnotes/getallnotes/getal
 import { CreatenoteComponent } from './Components/createnote/createnote/createnote.component';
 import { ReminderComponent } from './Components/Reminder/reminder/reminder.component';
 import { NotesComponent } from './Components/Notes/notes/notes.component';
-
+import { AuthguardservicesService } from './authguardservices.service';
+import { DeletenotesComponent } from './Components/delete/deletenotes/deletenotes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,9 @@ import { NotesComponent } from './Components/Notes/notes/notes.component';
     GetallnotesComponent,
     CreatenoteComponent,
     ReminderComponent,
-    NotesComponent
+    NotesComponent,
+    DeletenotesComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,9 @@ import { NotesComponent } from './Components/Notes/notes/notes.component';
     MatMenuModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [
+    AuthguardservicesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,125 +1,82 @@
-  
-body {
-    background: #fff;
-    direction: ltr;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    line-height: 1.4286;
-    margin: 0;
-    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
-    padding: 0;
-  }
-  .btns{
-    margin-top: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
-  }
-  .create{
-    align-self: center;
-  }
-  .submit-btn{
-    display: flex;
-      justify-content: flex-end;
-  }
-  a{
-    color: #1a73e8;
-    font-size: inherit;
-    font-family: "Google Sans",Roboto,Arial,sans-serif;
-    letter-spacing: .0107142857em;
-      font-weight: 500;
-      text-transform: none;
-    text-decoration: none;
-  }
-  .mat-focus-indicator, .mat-raised-button .mat-button-base{
-    background-color: #1a73e8;
-    color: white;
-  }
-  .password{
-    padding-top: 20px;
-  }
-  .container{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #DADCE0;
-    border-radius: 7px;
-    width: 400px;
-    padding: 30px;
-    margin: auto;
-    margin-top: 85px;
-    height: auto;
-      min-height: 450px;
-      align-content: center;
-  }
-  .use{
-    color: #202124;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: .1px;
-    line-height: 1.5;
-    padding-bottom: 0;
-    padding-top: 8px;
-  }
-  .Show-password{
-  margin-top: 20px;
-  }
-  .child{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  ::ng-deep  .mat-form-field-suffix{
-    top: -0.1em !important; 
-    color: rgba(0,0,0,.6);
-  }
-  .loginForm{
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    display: inline-block;
-    font-size: 14px;
-    padding: 24px 0 0;
-    vertical-align: top;
-    white-space: normal;
-    width: 100%
-  }
-  mat-form-field{
-    width: -webkit-fill-available;
-  }
-  
-  .color-fundoo{
-    font-weight: 550;
-    font-size: 15pt;
-    font-family: sans-serif;
-  }
-  .color-fundoo-F{
-    font-weight: 500;
-    font-size: 20pt;
-  }
-  .signin{
-    color: #202124;
-    padding-top: 16px;
-    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+}
+
+.logo, .title{
     font-size: 24px;
-      font-weight: 400;
-      line-height: 1.3333;
-  }
-  
-  ::ng-deep .register-snackbar{
-    justify-content: center !important;
-  }
-  
-  ::ng-deep simple-snack-bar span {
-    margin:auto;
     text-align: center;
-  }
-  
-  ::ng-deep .cdk-overlay-pane{
-    margin: auto !important;
-    margin-bottom:auto !important;
-  }
-  
-  ::ng-deep .mat-snack-bar-container{
-    min-width: 210px !important;
-  }
+}
+
+.logo{
+    padding-top: 40px;
+}
+
+.title{
+    padding-top: 15px;
+}
+
+.next-button{
+    margin-left: 190px;
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #1a73e8;
+    border-radius: 5px;
+    padding: 10px 5px;
+    min-width: 80px;
+    border: 1px solid #1a73e8;
+}
+
+.create-account-button{
+    font-size: 14px;
+    min-width: 120px;
+    text-align: center;
+    color:#1a73e8;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    margin-left: 30px;
+}
+
+.forget-password-button{
+    font-size: 14px;
+    min-width: 120px;
+    text-align: center;
+    color:#1a73e8;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    margin-left: 30px;
+}
+
+.next-button, .create-account-button{
+    margin-top: 100px;
+    margin-bottom: 70px;
+}
+
+.container{
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    width: 450px;
+    margin: 100px auto;
+}
+
+.use-account{
+    font-size: 16px;
+    text-align: center;
+    color: #202124;
+    margin-bottom: 30px;
+}
+
+.form-field{
+    width: 380px;
+    margin: 0px 35px;
+}
+
+@media(max-width:600px){
+    .container{
+        border: none;
+        margin: auto;       
+    }
+}  

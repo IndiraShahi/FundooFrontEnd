@@ -18,17 +18,16 @@ export class LoginComponent implements OnInit {
   [x: string]: any;
 
   public isActive: boolean;
-  loginForm:FormGroup
-  public Email: string = '@gmail.com';
+  loginForm:FormGroup;
+  submitted: boolean = false;
+  
  
  
   constructor(private formBuilder:FormBuilder,private Userservice:UserservicesService,
     public snackBar: MatSnackBar, private route: Router) { 
     this.loginForm = this.formBuilder.group(
       {
-        Email: new FormControl('', [Validators.required, 
-          Validators.pattern('^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)*$')
-        ]),
+        Email: new FormControl('', [Validators.required, Validators.email]),
         Password:  new FormControl('', [Validators.required ]
         ),}
     );   
@@ -54,7 +53,7 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       this.openSnackBar('Login in...', 0);
       let reqData ={
-        Email: this.loginForm.get('Email')?.value+this.Email,
+        Email: this.loginForm.get('Email')?.value,
         Password: this.loginForm.get('Password')?.value
       }
       
