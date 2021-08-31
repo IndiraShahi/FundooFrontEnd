@@ -23,15 +23,15 @@ export class DialogueContentComponent implements OnInit {
   ngOnInit(): void {
     this.cardUpdateForm = this.formBuilder.group({
       noteId: this.data.noteId,
-      Title: this.data.title,
-      WrittenNote: this.data.writtenNote
+      title: this.data.title,
+      writtenNote: this.data.writtenNote
     })
   }
   updateNote(data: any) {
     let reqPayload = {
       noteId: this.cardUpdateForm.value.noteId,
-      Title: this.cardUpdateForm.value.title,
-      WrittenNote: this.cardUpdateForm.value.writtenNote
+      title: this.cardUpdateForm.value.title,
+      writtenNote: this.cardUpdateForm.value.writtenNote
     }
     //new trash function rhega like  UpdateExistingNote usme sirf note id pass krna  "NotesId: this.cardUpdateForm.value.notesId"
     this.noteService.UpdateExistingNote(reqPayload).subscribe((response: any) => {
@@ -70,7 +70,7 @@ export class DialogueContentComponent implements OnInit {
    //Call this function on trash icon u r done
    archiveNote() {
     let reqPayload = {
-      NoteId: this.cardUpdateForm.value.notesId,
+      noteId: this.cardUpdateForm.value.noteId,
     }
     this.noteService.archiveNote(reqPayload).subscribe((response: any) => {
       this.op = response.data;

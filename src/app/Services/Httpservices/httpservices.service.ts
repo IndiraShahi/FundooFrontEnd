@@ -90,8 +90,8 @@ export class HttpservicesService {
   UpdateNote(id: any) {
     console.log(id);
     const data = {
-      Title: id.title,
-      WrittenNote: id.writtenNote
+      title: id.title,
+      writtenNote: id.writtenNote
     }
     console.log(data);
     let token = localStorage.getItem('FunDooJwt');
@@ -131,7 +131,7 @@ export class HttpservicesService {
       })
     }
     console.log(options);
-    return this.http.put(this.baseUrl + `Notes/${id.NotesId}/Archive`, null,options);
+    return this.http.put(this.baseUrl + `Notes/${id.noteId}/Archive`, null,options);
   }
 
   //delete note
@@ -143,7 +143,7 @@ export class HttpservicesService {
         'Content-Type': 'application/json'
       }),
     }
-    return this.http.delete(this.baseUrl + 'Notes?notesId=' + id, options);
+    return this.http.delete(this.baseUrl + `Notes/${id.noteId}`, options);
   }
 }
 
