@@ -1,48 +1,66 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output } from '@angular/core';
 import { NotesServicesService } from 'src/app/Services/NotesServices/notes-services.service';
-import { ActivatedRoute } from '@angular/router'; 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-createnote',
   templateUrl: './createnote.component.html',
   styleUrls: ['./createnote.component.scss']
 })
 export class CreatenoteComponent implements OnInit 
-  {
-    noteForm!: FormGroup;
-    response: any;
-    token: any;
-  
-    constructor(private formBuilder: FormBuilder,private http: HttpClient, private note: NotesServicesService,private activeRoute: ActivatedRoute) { }
-  
-    ngOnInit(): void
-    {
-      this.noteForm = this.formBuilder.group({
-        title: ['', [Validators.maxLength(200), Validators.minLength(1)]],
-        body: ['', [Validators.maxLength(400)]]
-      });
-    }
-  
-    close()
-    {
-      if (this.noteForm.value.title != "" && this.noteForm.value.body != "")
-      {
-        let data = {
-          Title: this.noteForm.get('title')?.value,
-          WrittenNote: this.noteForm.get('body')?.value,
-          Color: "blue",
-          IsArchive: false,
-          IsPin: false,
-          IsBin: false,
-        }
-  
-        console.log(" add note data ", data);
-        this.note.createNote(this.token,data).subscribe(
-          response =>
-          {
-            console.log(response);
-          })
-      }
-    }
+{
+  title = ''
+  writtenNote = ''
+  isOpen = true;
+  token: any;
+  fullEdit: boolean = false;
+
+  pin: boolean = false;
+
+  isReminder = false;
+  isArchive = false;
+  isPin = false;
+  isTrash = false;
+  //@Output() createNoteRefersh = new EventEmitter;
+  click() {
+    this.isOpen = true;
   }
+  constructor(private note: NotesServicesService, private activeRoute: ActivatedRoute) { }
+   @Output() createNoteRefersh = new EventEmitter<string>();
+
+  ngOnInit(): void {
+    // this.token = this.activeRoute.snapshot.paramMap.get('token');
+
+  }
+
+
+  addNote() {
+    let data = {
+      Title: this.title,
+      WrittenNote: this.writtenNote,
+      IsArchive: this.isArchive,
+      IsPin: this.isPin,
+      IsBin: this.isTrash
+    }
+    this.token = localStorage.getItem('Token');
+    console.log(" add note data ", data);
+if(this.title && this.writtenNote){
+  this.note.createNote(this.token, data).subscribe((response) => {
+    console.log(response);
+    let message = "note created successfull";
+    console.log(message);
+    this.createNoteRefersh.emit(message);
+  })
+} else {
+  this.fullEdit = false;
+}
+   
+
+  }
+  togglePin() {
+    this.pin = !this.pin;
+  }
+  displayFull() {
+    this.fullEdit = true;
+  }
+}

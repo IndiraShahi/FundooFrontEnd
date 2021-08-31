@@ -23,10 +23,17 @@ import {MatCardModule} from '@angular/material/card';
 import { DashboardComponent } from './Components/dashboard/dashboard/dashboard.component';
 import { GetallnotesComponent } from './Components/getallnotes/getallnotes/getallnotes.component';
 import { CreatenoteComponent } from './Components/createnote/createnote/createnote.component';
-import { ReminderComponent } from './Components/Reminder/reminder/reminder.component';
 import { NotesComponent } from './Components/Notes/notes/notes.component';
 import { AuthguardservicesService } from './authguardservices.service';
+import { GetTrashComponent } from './Components/get-trash/get-trash/get-trash.component';
+import { GetarchiveComponent } from './Components/getarchive/getarchive/getarchive.component';
 import { DeletenotesComponent } from './Components/delete/deletenotes/deletenotes.component';
+import { ReminderComponent } from './Components/Reminder/reminder/reminder.component';
+import { IconsComponent } from './Components/icons/icons/icons.component';
+import { DialogueContentComponent } from './Components/dialogue-content/dialogue-content/dialogue-content.component';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +44,13 @@ import { DeletenotesComponent } from './Components/delete/deletenotes/deletenote
     DashboardComponent,
     GetallnotesComponent,
     CreatenoteComponent,
-    ReminderComponent,
     NotesComponent,
+    GetTrashComponent,
+    GetarchiveComponent,
     DeletenotesComponent,
+    ReminderComponent,
+    IconsComponent,
+    DialogueContentComponent,
     
   ],
   imports: [
@@ -58,9 +69,11 @@ import { DeletenotesComponent } from './Components/delete/deletenotes/deletenote
     MatToolbarModule,
     MatListModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+    MatTooltipModule
   ],
-  providers: [
+  providers: [  { provide: MAT_DIALOG_DATA, useValue: {} },
     AuthguardservicesService
   ],
   bootstrap: [AppComponent]

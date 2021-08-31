@@ -1,0 +1,55 @@
+<form [formGroup]="cardUpdateForm">
+    <div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
+      <input  class="boreder"mat-dialog-title formControlName="title" placeholder="title" value="{{data.title}}" />
+      <div class="container" fxlayoutAlign="center center">
+        <mat-icon class="my-button pinBtn" [class.clicked]="true">push_pin</mat-icon>
+      </div>
+    </div>
+   
+    <div>
+      <input mat-dialog-title formControlName="writtenNote" placeholder="writtenNote" value="{{data.writtenNote}}" />
+    </div>
+    <input mat-dialog-title formControlName="noteId" placeholder="noteId" value="{{data.noteId}}" />
+    <div fxLayoutAlign="end center">
+      <p>
+        Edited: {{data.modifiedDate}}
+      </p>
+    </div>
+  </form>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="card-bottom" id="bottom">
+      <div class="note-prop">
+        
+        <div class="reminder prop" role="button" matTooltip="Remind me" matTooltipClass="prop-tip"
+          matTooltipPosition='below'></div>
+        <div class="back-img prop" role="button" matTooltip="Add image" matTooltipPosition='below'></div> 
+        <div class="back-color prop"  [matMenuTriggerFor]="menus" role="button" matTooltip="Change color" matTooltipPosition='below'>
+          <mat-menu #menus="matMenu">
+              <button mat-menu-item>
+                   
+                <!-- (click)="deleteNote(note.notesId)" -->
+              </button>
+            </mat-menu>
+           
+      </div>
+      <!-- [card]="note" -->
+        <div  class="archive prop" (click)="archiveNote()" role="button" matTooltip="Archive" matTooltipPosition='below'></div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon class="iconpadd">more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <!-- (click)="deleteNote(note.notesId)" -->
+            <p (click) ="trashNote(data.noteId)">Delete Note</p>
+          </button>
+          <button mat-menu-item disabled>
+            <p>Add Label</p>
+          </button>
+        </mat-menu>
+        <!--<div class="">  -->
+        <!-- Templete statements -->
+      </div>
+    </div>
+    <!-- (click)="updateNote(data)" -->
+    <p class="button"> <button mat-button formControlName="noteId" mat-dialog-close (click)="updateNote(data.noteId)" >Close</button></p>
+  </mat-dialog-actions>

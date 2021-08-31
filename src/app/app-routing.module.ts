@@ -6,9 +6,13 @@ import { ResetpasswordComponent } from './Components/resetpassword/resetpassword
 import { RegisterComponent } from './Components/register/register.component';
 import { DashboardComponent } from './Components/dashboard/dashboard/dashboard.component';
 import { NotesComponent } from './Components/Notes/notes/notes.component';
-import { ReminderComponent } from './Components/Reminder/reminder/reminder.component';
 import { AuthguardGuard } from './authguard.guard';
 import { AuthguardservicesService } from './authguardservices.service';
+import { GetarchiveComponent } from './Components/getarchive/getarchive/getarchive.component';
+import { GetTrashComponent } from './Components/get-trash/get-trash/get-trash.component';
+import { ReminderComponent } from './Components/Reminder/reminder/reminder.component';
+import { GetallnotesComponent } from './Components/getallnotes/getallnotes/getallnotes.component';
+import { CreatenoteComponent } from './Components/createnote/createnote/createnote.component';
 const routes: Routes = [
 
 { path: 'register', component: RegisterComponent },
@@ -22,8 +26,10 @@ const routes: Routes = [
   children: [
 
     { path: '', redirectTo: "notes", pathMatch: "full" },
-    { path: 'notes', component: NotesComponent },
-    { path: 'Reminder', component: ReminderComponent },
+    { path: 'notes', component: GetallnotesComponent },
+    { path: 'Reminder', component: ReminderComponent},
+    { path: 'Archive', component: GetarchiveComponent },
+      { path: 'Trash', component: GetTrashComponent }
   ]
 },
 

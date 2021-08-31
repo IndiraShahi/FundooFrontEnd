@@ -1,3 +1,14 @@
-<app-createnote></app-createnote>
-<app-getallnotes>style="display: flex;flex-wrap: wrap;padding: 10px 40px;justify-content: start;"
-    class="main-getnote"  ></app-getallnotes>
+<div (mouseenter)="mouseEnter() " (mouseleave)="mouseLeave()"
+ style="flex-direction: row;display: flex;margin: 10px;" *ngFor="let note of allNotes;">
+  <mat-card class="card" ng-class="" [ngStyle]="{'background': '#'.concat(note.color) }">
+    <div (click)="openDialog(note)" class="mainBlock">
+      <div id="title" #title contenteditable="false" aria-multiline="true" role="textbox" class="font n1" dir="ltr">
+        <strong>{{note.title}}</strong>
+      </div>
+      <div id="description" #description contenteditable="false" aria-multiline="true" role="textbox" class="font n1"
+        dir="ltr">{{note.writtenNote}}</div> 
+        <!-- [hidden]="!iconVisible" -->
+        
+      </div>
+      <span > <app-icons  ></app-icons></span> </mat-card>
+</div>

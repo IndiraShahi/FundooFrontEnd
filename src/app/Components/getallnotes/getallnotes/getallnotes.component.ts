@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { NotesServicesService } from 'src/app/Services/NotesServices/notes-services.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -11,29 +11,26 @@ export class GetallnotesComponent implements OnInit {
   
   token: any;
   isTrash = true
-  @Input() noteArray: any = []
-  constructor( private noteservices : NotesServicesService,private activeRoute: ActivatedRoute) { }
-
+  notesArray: any = []
+  //@Input() noteArray: any = []
+  constructor(private note: NotesServicesService, private activeRoute: ActivatedRoute) { }
+  
   ngOnInit(): void {
     this.GetAllNotes();
   }
+
   GetAllNotes() {
-    this.noteservices.GetAllNotes('Notes').subscribe((response: any) => {
+    this.note.GetAllNotes('Notes').subscribe((response: any) => {
       console.log(response);
-      this.noteArray = response.data;
-      console.log(this.noteArray);
-  
+      this.notesArray = response.data;
+      this.notesArray.reverse();
+      console.log(this.notesArray);
     }
     )
   }
-  deleteNote(note: any) {
-    let data = {
-      IsBin: this.isTrash
-    }
-    this.noteservices.deleteNote(note).subscribe(data => {
-      console.log(data);
-      this.GetAllNotes();
-    })
+  refreshNotes(value:any ){
+    console.log(value);
+    this.GetAllNotes();
   }
 }
-
+  
