@@ -34,6 +34,7 @@ import { DialogueContentComponent } from './Components/dialogue-content/dialogue
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatMenuModule,
     MatCardModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   providers: [  { provide: MAT_DIALOG_DATA, useValue: {} },
     AuthguardservicesService

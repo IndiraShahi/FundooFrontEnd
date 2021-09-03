@@ -1,55 +1,95 @@
-<mat-card class="cn-card ">
-    <div class="card-title" *ngIf="fullEdit">
-        <input class="title-in font" matInput placeholder="Title" id="title" [(ngModel)]="title">
+<div class="takeNoteSection" >
+    <mat-card [ngClass]="getColor()" >
+        <div class="card-title" *ngIf="fullEdit">
+            <input class="title-in font" matInput placeholder="title" [ngClass]="getColor()"   id="title" [(ngModel)]="title">
 
-        <div class="pin-div" (click)="togglePin()" matTooltip="Pin note" matTooltipPosition='below'>
-            <div role="button" class="pin" [ngClass]="pin ? 'pinned-back' : 'unpinned-back'">
-                <!-- <div role="button" class="pin" [ngClass]="pin ? 'pinned-back' : 'pinned-back'">  -->
+            <div class="pin-div" (click)="togglePin()" matTooltip="Pin note" matTooltipPosition='below'>
+                <div role="button" class="pin" [ngClass]="pin ? 'pinned-back' : 'unpinned-back'">
+                    <!-- <div role="button" class="pin" [ngClass]="pin ? 'pinned-back' : 'pinned-back'">  -->
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="note-input" (click)=displayFull()>
-        <textarea contenteditable="true" aria-multiline="true" role="textbox" Placeholder="Take a note..."
-            class="notes-main" tabindex="0" spellcheck="true" id="description" [(ngModel)]="writtenNote"></textarea>
-        <div class="img-upload" *ngIf="!fullEdit"></div>
+        <div class="note-input" (click)=displayFull()>
+            <input contenteditable="true" aria-multiline="true" role="textbox" [ngClass]="getColor()"   Placeholder="Take a note..."
+                class="notes-main" tabindex="0" spellcheck="true" id="writtenNote" [(ngModel)]="writtenNote">
+            <div class="img-upload" *ngIf="!fullEdit"></div>
 
-    </div>
-
-    <div class="card-bottom" id="bottom" *ngIf="fullEdit">
-        <div class="note-prop">
-            <div class="reminder prop" role="button" matTooltip="Remind me" matTooltipClass="prop-tip"
-                matTooltipPosition='below'></div>
-            <div class="back-img prop" role="button" matTooltip="Add image" matTooltipPosition='below'></div>
-            <div class="back-color prop" role="button" matTooltip="Change color" matTooltipPosition='below'>
-                <!-- <mat-menu #menus="matMenu">
-                    <button mat-menu-item>
-                         
-        
-                      <p class="iconcolrcss red" (click)="updateColor(data.notesId, '#FFFFFF')"></p>
-                      <p class="iconcolrcss red" (click)="updateColor(data.notesId, '#F28B82')"></p>
-                      <p class="iconcolrcss orange" (click)="updateColor(data.notesId,'#FBBC04')"></p>
-                      <p class="iconcolrcss yellow" (click)="updateColor(data.notesId, '#FFF475')"></p>
-                      <p class="iconcolrcss green" (click)="updateColor(data.notesId, '#CCFF90')"></p>
-                      <p class="iconcolrcss teal" (click)="updateColor(data.notesId, '#A7FFEB')"></p>
-                      <p class="iconcolrcss blue" (click)="updateColor(data.notesId, '#CBF0F8')"></p>
-                      <p class="iconcolrcss darkblue" (click)="updateColor(data.notesId, '#AECBFA')"></p>
-                      <p class="iconcolrcss purple" (click)="updateColor(data.notesId, '#D7AEFB')"></p>
-                      <p class="iconcolrcss pink" (click)="updateColor(data.notesId, '#FDCFE8')"></p>
-                      <p class="iconcolrcss brown" (click)="updateColor(data.notesId, '#E6C9A8')"></p>
-                      <p class="iconcolrcss grey" (click)="updateColor(data.notesId, '#E8EAED')"></p>
-                      
-                    </button>
-                  </mat-menu>
-                  -->
-
-            </div>
-            <div class="archive prop" role="button" matTooltip="Archive" matTooltipPosition='below'></div>
-            <div class="more-opn prop" role="button" matTooltip="More" matTooltipPosition='below'></div>
-
-            <!--<div class="">  -->
-            <!-- Templete statements -->
         </div>
-        <div class="close-note" (click)="addNote()">Close</div>
-    </div>
-</mat-card>
+
+        <div class="card-bottom" id="bottom" *ngIf="fullEdit">
+            <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="card-bottom" id="bottom">
+                    <div class="note-prop">
+
+                        <div class="reminder prop" role="button" matTooltip="Remind me" matTooltipClass="prop-tip"
+                            matTooltipPosition='below'></div>
+                        <div class="back-img prop" role="button" matTooltip="Add image" matTooltipPosition='below'>
+                        </div>
+                        <div class="back-color prop" [matMenuTriggerFor]="aboveMenu" role="button" matTooltip="Change color"
+                            matTooltipPosition='below'>
+                          
+
+                                    <mat-menu #aboveMenu="matMenu" yPosition="above">
+                                        <div fxLayout="row" class="space" fxLayoutAlign="space-between center">
+                                      
+                                          <button matTooltip="Default" class="pallete bg-white" (click)="Color('#FFFFFF')" mat-menu-item></button>
+                                      
+                                          <button matTooltip="Red" value="#E75F5F" (click)="Color('#E75F5F')" class="pallete bg-red" mat-menu-item></button>
+                                      
+                                          <button matTooltip="Green" (click)="Color('#65E665')" class="pallete bg-green" mat-menu-item></button>
+                                        </div>
+                                      
+                                        <div fxLayout="row" class="space" fxLayoutAlign="space-between center">
+                                      
+                                          <button matTooltip="Ornage" (click)="Color('#E28011')" class="pallete bg-orange" mat-menu-item></button>
+                                      
+                                          <button matTooltip="Pink" (click)="Color('#EE6CE3')" class="pallete bg-pink" mat-menu-item></button>
+                                      
+                                          <button matTooltip="Gray" (click)="Color('#C3C0C086')" class="pallete bg-gray" mat-menu-item></button>
+                                      
+                                        </div>
+                                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                                      
+                                          <button matTooltip="purple" (click)="Color('#BEE7AEB')" class="pallete bg-purple" mat-menu-item></button>
+                                      
+                                          <button matTooltip="Blue" (click)="Color('#5EADEE')" class="pallete bg-blue " mat-menu-item></button>
+                                      
+                                          <button matTooltip="Yellow" (click)="Color('#E7DA65')" class="pallete bg-yellow" mat-menu-item></button>
+                                      
+                                        </div>
+                                      </mat-menu>
+                              
+
+                        </div>
+                        <!-- [card]="note" -->
+                        <div class="archive prop" [class.clicked]="isArchive" (click)="isArchive=!isArchive"
+                            role="button" matTooltip="Archive" matTooltipPosition='below'>
+                        </div>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon class="iconpadd">more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <!-- <button mat-menu-item>
+                         (click)="deleteNote(note.notesId)" 
+                        <p (click)="trashNote()">Delete Note</p>
+                      </button> -->
+                            <button mat-menu-item disabled>
+                                <p>Add Label</p>
+                            </button>
+
+                        </mat-menu>
+                        <p class="button" style="padding-left: 230px ;"> <button mat-button formControlName="noteId"
+                                mat-dialog-close (click)="addNote()">Close</button></p>
+                        <!--<div class="">  -->
+                        <!-- Templete statements -->
+                    </div>
+                </div>
+                <!-- (click)="updateNote(data)" -->
+
+            </mat-dialog-actions>
+
+        </div>
+    </mat-card>
+</div>
+

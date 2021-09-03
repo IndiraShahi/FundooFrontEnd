@@ -4,6 +4,7 @@ import { DialogueContentComponent } from '../../dialogue-content/dialogue-conten
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpservicesService } from 'src/app/Services/Httpservices/httpservices.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -17,7 +18,7 @@ export class NotesComponent implements OnInit {
   @Input() allNotes: any = []
   @Output() UpdateNote = new EventEmitter<any>();
  
-  constructor(private note: NotesServicesService, private mate: MatDialog) { }
+  constructor(private note: NotesServicesService, private mate: MatDialog, public snackBar: MatSnackBar) { }
 
   ngOnInit(): void 
   {
@@ -26,7 +27,8 @@ export class NotesComponent implements OnInit {
   openDialog(note: any) {
     let dialogRef = this.mate.open(DialogueContentComponent, {
       width: '500px',
-      data: note
+      data: note,
+      backdropClass: ''
     });
     dialogRef.afterClosed().subscribe()
   }
@@ -36,20 +38,29 @@ export class NotesComponent implements OnInit {
     }
     this.note.deleteNote(note).subscribe(data => {
       console.log(data);
-      // this.GetAllNotes();
     })
   }
-  //Call this function on trash icon u r done
   trashNote() {
     let reqPayload = {
-     // NotesId: this.cardUpdateForm.value.notesId,
     }
     this.note.trashNote(reqPayload).subscribe((response:any) => {
       this.op = response.data;
       this.UpdateNote.emit(this.op);
     })
   }
- 
+  updateColor(id: any, color: string) {
+    let reqPayload = {
+    }
+    this.note.updateColor(reqPayload).subscribe((response: any) => {
+      this.op = response.data;
+      this.UpdateNote.emit(this.op);
+      this.snackBar.open("Note Updated Successfully.....", " ", { duration: 2000 });
+    }, error => {
+      console.log("error in register", error);
+      this.snackBar.open("Updating Note fail.....", " ", { duration: 2000 });
+
+    })
+  }
   mouseEnter() {
     this.iconVisible = true;
   }

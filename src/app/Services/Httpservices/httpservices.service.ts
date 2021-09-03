@@ -133,10 +133,27 @@ export class HttpservicesService {
     console.log(options);
     return this.http.put(this.baseUrl + `Notes/${id.noteId}/Archive`, null,options);
   }
+  
+  UpdateColor(data: any) {
+    console.log(data)
+   const id=data.noteId;
+   const color=data.color;
+
+    let token = localStorage.getItem('FunDooJwt');
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + token,
+        'Content-Type': 'application/json'
+      })
+    }
+    
+    return this.http.put(this.baseUrl + `Notes/AddColor?noteId=${data.noteId}&color=${color.replace('#','')}`,data, options);
+  }
+
 
   //delete note
   delete(id: any) {
-    let token = localStorage.getItem('Token');
+    let token = localStorage.getItem('FunDooJwt');
     let options = {
       headers: new HttpHeaders({
         'Authorization': "Bearer " + token,

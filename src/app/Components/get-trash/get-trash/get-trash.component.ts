@@ -26,5 +26,14 @@ export class GetTrashComponent implements OnInit {
     }
     )
   }
+  deleteNote(note: any) {
+    let data = {
+     // isTrash: this.isTrash
+    }
+    this.note.deleteNote(note).subscribe(data => {
+      console.log(data);
+      this.GetAllTrash();
+    })
+  }
 }
 

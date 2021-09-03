@@ -12,6 +12,7 @@ export class DialogueContentComponent implements OnInit {
 
   cardUpdateForm!: FormGroup;
   op: any
+  pin: boolean = false;
   @Output() UpdateNote = new EventEmitter<any>();
   notesArray: any;
 
@@ -24,6 +25,7 @@ export class DialogueContentComponent implements OnInit {
     this.cardUpdateForm = this.formBuilder.group({
       noteId: this.data.noteId,
       title: this.data.title,
+      color: this.data.color,
       writtenNote: this.data.writtenNote
     })
   }
@@ -36,6 +38,8 @@ export class DialogueContentComponent implements OnInit {
     //new trash function rhega like  UpdateExistingNote usme sirf note id pass krna  "NotesId: this.cardUpdateForm.value.notesId"
     this.noteService.UpdateExistingNote(reqPayload).subscribe((response: any) => {
       this.op = response.data;
+      this.op.reverse();
+      window.location.reload();
       this.UpdateNote.emit(this.op);
     })
 
@@ -44,6 +48,20 @@ export class DialogueContentComponent implements OnInit {
   refreshNotes(value:any ){
     console.log(value);
    // this.UpdateNote();
+  }
+
+  updateColor(id: any, color: string) {
+    let reqPayload = {
+      noteId: id,
+      color: color
+    }
+    console.log(reqPayload);
+    this.noteService.updateColor(reqPayload).subscribe((response: any) => {
+      this.op = response.data;
+      console.log(this.op);
+      window.location.reload();
+      //this.updateColor.emit(this.op);
+    })
   }
   GetAllNotes() {
     this.noteService.GetAllNotes('Notes').subscribe((response: any) => {
@@ -76,5 +94,8 @@ export class DialogueContentComponent implements OnInit {
       this.op = response.data;
       this.UpdateNote.emit(this.op);
     })
+  }
+  togglePin(){
+    this.pin =!this.pin;
   }
 }

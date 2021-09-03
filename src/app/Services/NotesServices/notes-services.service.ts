@@ -11,7 +11,7 @@ export class NotesServicesService {
   }
   
   createNote(token: any, data: any) {
-    return this.http.createNote('Notes', data);
+    return this.http.createNote('Notes', data)
 
   }
   //delete Notes
@@ -35,6 +35,9 @@ export class NotesServicesService {
   }
   archiveNote(data: any) {
     return this.http.archiveNote(data);
+  }
+  updateColor(data: any) {
+    return this.http.UpdateColor(data);
   }
 }
 

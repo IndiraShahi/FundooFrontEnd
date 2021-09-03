@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 import { Router } from '@angular/router';
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements  OnDestroy{
+export class DashboardComponent implements  OnDestroy, OnInit{
 
   hide: Boolean = false;
   advancedUser: Boolean = true;
@@ -38,6 +38,11 @@ export class DashboardComponent implements  OnDestroy{
   refresh() {
     window.location.reload();
   }  
+  logout() {
+    sessionStorage.clear();
+    localStorage.clear();
+    this.routers.navigateByUrl('login');
+  }
   changeHide() {
     this.hide = !this.hide;
   }

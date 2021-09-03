@@ -1,14 +1,17 @@
-<div (mouseenter)="mouseEnter() " (mouseleave)="mouseLeave()"
- style="flex-direction: row;display: flex;margin: 10px;" *ngFor="let note of allNotes;">
+<div  style="flex-direction: row;display: flex;margin: 10px;"
+  *ngFor="let note of allNotes;">
   <mat-card class="card" ng-class="" [ngStyle]="{'background': '#'.concat(note.color) }">
-    <div (click)="openDialog(note)" class="mainBlock">
+    <div (click)="openDialog(note)" class="mainBlock"> 
       <div id="title" #title contenteditable="false" aria-multiline="true" role="textbox" class="font n1" dir="ltr">
         <strong>{{note.title}}</strong>
       </div>
       <div id="description" #description contenteditable="false" aria-multiline="true" role="textbox" class="font n1"
-        dir="ltr">{{note.writtenNote}}</div> 
-        <!-- [hidden]="!iconVisible" -->
-        
-      </div>
-      <span > <app-icons  ></app-icons></span> </mat-card>
+        dir="ltr">{{note.writtenNote}}</div>
+      <!-- [hidden]="!iconVisible" -->
+
+    </div>
+    <div class="card-bottom">
+      <app-icons [card]="note"></app-icons>
+    </div>
+  </mat-card>
 </div>
