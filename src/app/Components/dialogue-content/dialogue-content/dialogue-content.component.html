@@ -1,3 +1,4 @@
+<div [style.background-color]=color>
 <form [formGroup]="cardUpdateForm">
     <div class="notesTitle" fxLayout="row" fxLayoutAlign="space-between center">
       <input class="boreder" mat-dialog-title formControlName="title" placeholder="title" value="{{data.title}}" />
@@ -49,6 +50,7 @@
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
+
             <!-- (click)="deleteNote(note.notesId)" -->
             <p (click)="trashNote(data.noteId)">Delete Note</p>
           </button>
@@ -59,10 +61,6 @@
         </mat-menu>
         <p class="button" style="padding-left: 150px ;"> <button mat-button formControlName="noteId" mat-dialog-close
             (click)="updateNote(data.noteId)">Close</button></p>
-        <!--<div class="">  -->
-        <!-- Templete statements -->
       </div>
     </div>
-    <!-- (click)="updateNote(data)" -->
-
   </mat-dialog-actions>

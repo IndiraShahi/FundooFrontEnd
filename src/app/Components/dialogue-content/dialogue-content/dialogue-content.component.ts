@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
 import { NotesServicesService } from 'src/app/Services/NotesServices/notes-services.service';
 import { FormBuilder , FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DataServicesService } from 'src/app/Services/data-services.service';
 
 @Component({
   selector: 'app-dialogue-content',
@@ -15,17 +16,22 @@ export class DialogueContentComponent implements OnInit {
   pin: boolean = false;
   @Output() UpdateNote = new EventEmitter<any>();
   notesArray: any;
+  color: any
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
-    private noteService: NotesServicesService
-  ) { }
+    private noteService: NotesServicesService,private dataservice: DataServicesService
+  )
+   {
+    console.log(data);
+    this.color = '#'.concat(data.color)
+    console.log(this.color);
+    }
 
   ngOnInit(): void {
     this.cardUpdateForm = this.formBuilder.group({
       noteId: this.data.noteId,
       title: this.data.title,
-      color: this.data.color,
       writtenNote: this.data.writtenNote
     })
   }
@@ -38,9 +44,7 @@ export class DialogueContentComponent implements OnInit {
     //new trash function rhega like  UpdateExistingNote usme sirf note id pass krna  "NotesId: this.cardUpdateForm.value.notesId"
     this.noteService.UpdateExistingNote(reqPayload).subscribe((response: any) => {
       this.op = response.data;
-      this.op.reverse();
-      window.location.reload();
-      this.UpdateNote.emit(this.op);
+      this.dataservice.sendMessage(this.op)
     })
 
   }
@@ -85,13 +89,14 @@ export class DialogueContentComponent implements OnInit {
       this.UpdateNote.emit(this.op);
     })
   }
-   //Call this function on trash icon u r done
+   
    archiveNote() {
     let reqPayload = {
       noteId: this.cardUpdateForm.value.noteId,
     }
     this.noteService.archiveNote(reqPayload).subscribe((response: any) => {
       this.op = response.data;
+      window.location.reload();
       this.UpdateNote.emit(this.op);
     })
   }

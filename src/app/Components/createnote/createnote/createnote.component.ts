@@ -61,10 +61,8 @@ export class CreatenoteComponent implements OnInit
     }
   }
   Color(colorCode: any) {
-   // this.red = colorCode;
     this.colorString = colorCode
     console.log(colorCode);
-   // console.log(this.red);
   }
 
   addNote() {
