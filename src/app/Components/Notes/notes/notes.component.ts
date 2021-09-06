@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpservicesService } from 'src/app/Services/Httpservices/httpservices.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataServicesService } from 'src/app/Services/data-services.service';
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -18,11 +19,11 @@ export class NotesComponent implements OnInit {
   @Input() allNotes: any = []
   @Output() UpdateNote = new EventEmitter<any>();
  
-  constructor(private note: NotesServicesService, private mate: MatDialog, public snackBar: MatSnackBar) { }
+  constructor(private note: NotesServicesService, private mate: MatDialog, public snackBar: MatSnackBar,private dataservice: DataServicesService) { }
 
   ngOnInit(): void 
   {
-
+    this.dataservice.recievedMessage.subscribe(response => console.log(response))
   }
   openDialog(note: any) {
     let dialogRef = this.mate.open(DialogueContentComponent, {

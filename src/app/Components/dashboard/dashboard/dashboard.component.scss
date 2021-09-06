@@ -37,24 +37,7 @@ border: 0;
 .mat-drawer-container {
   background-color: #fff !important;
 }
-// .search-box-in-header {
-//   margin-left: 6%;
-//   border-radius: 10px;
-//   height: 35px;
-//   width: 50%;
-//   background-color: rgba(213, 207, 233, 0.993);
-//   color: #fff;
-// }
-//  input{ 
-//    height: 35px;
-//     background-color: rgba(213, 207, 233, 0.993);
-//     color:#000;
-//     float: right;
-//     margin-top: 8px;
-//     background: #ddd;
-//     font-size: 17px;
-//     border: none;
-//     cursor: pointer;}
+
 .three-icons-in-header-bigger-screen {
   margin-left: 30%;
 }
@@ -262,8 +245,14 @@ h1.example-app-name {
 {
   padding: 0px;
 }
-.timepass{ 
-  display: flex;
-  flex-direction: row;
-  justify-content:space-evenly;
+
+dilaog 
+::ng-deep .mat-dialog-container{
+    padding: 0px;
+}
+
+.updateDialog{
+    .mat-dialog-container{
+        padding: 0px;
+    } 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { NotesServicesService } from 'src/app/Services/NotesServices/notes-services.service';
 import { ActivatedRoute } from '@angular/router';
+import { DataServicesService } from 'src/app/Services/data-services.service';
 @Component({
   selector: 'app-getallnotes',
   templateUrl: './getallnotes.component.html',
@@ -13,10 +14,14 @@ export class GetallnotesComponent implements OnInit {
   isTrash = true
   notesArray: any = []
   //@Input() noteArray: any = []
-  constructor(private note: NotesServicesService, private activeRoute: ActivatedRoute) { }
+  constructor(private note: NotesServicesService, private activeRoute: ActivatedRoute, private dataservice: DataServicesService) { }
   
   ngOnInit(): void {
     this.GetAllNotes();
+    this.dataservice.recievedMessage.subscribe(response => {
+      console.log(response)
+      this.GetAllNotes();
+    })
   }
 
   GetAllNotes() {

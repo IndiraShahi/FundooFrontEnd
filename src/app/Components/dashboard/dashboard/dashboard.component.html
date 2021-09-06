@@ -1,4 +1,4 @@
-<div class="example-container"  [class.example-is-mobile]="mobileQuery.matches">
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar class="example-toolbar shadow">
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
@@ -7,21 +7,18 @@
     <span class="colorfundoo" style="color:#4285F4">F</span>
     <span class="colorfundoo" style="color:#4285F4">un</span>
     <span class="colorfundoo" style="color:#EA4335">doo</span>
-    <div  fxLayout="row" class="search-container">
+    <div fxLayout="row" class="search-container">
       <form>
         <input type="text" placeholder="Search.." name="search">
       </form>
     </div>
     <span style="flex:1 1 auto"></span>
     <!-- Three Icons -->
-    <div class="timepass" fxLayout="row" fxLayoutAlign="space-around" style="margin-top: 1%; margin-left:5%">
+    <div fxLayout="row" fxLayoutAlign="space-around" style="margin-top: 1%; margin-left:5%">
 
-      <!-- <div fxHide.gt-xs="true">
-        <mat-icon class="material-icons" style="color: #440744">search</mat-icon>
-      </div> -->
+     
       <div ngClass.xs=three-icons-in-header-smaller-screen>
-        <mat-icon matTooltip="refresh" class="material-icons" style="color:#767676"
-          (click)=refresh()>refresh
+        <mat-icon matTooltip="refresh" class="material-icons" style="color:#767676" (click)=refresh()>refresh
         </mat-icon>
       </div>
       <div ngClass.gt-xs=three-icons-in-header-bigger-screen>
@@ -48,11 +45,7 @@
 
       <mat-menu #profile="matMenu">
 
-        <mat-card-header>
-          <img mat-card-avatar src="https://source.unsplash.com/random/200x200">
-          <!-- <mat-card-title><strong>{{userName}}</strong></mat-card-title>
-                    <mat-card-subtitle>{{userEmail}}</mat-card-subtitle> -->
-        </mat-card-header>
+
 
         <button class="next-button" mat-button (click)=logout()>
           <mat-icon>exit_to_app</mat-icon>&nbsp;<span> Logout</span>

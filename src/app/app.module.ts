@@ -34,6 +34,7 @@ import { DialogueContentComponent } from './Components/dialogue-content/dialogue
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
+import { FlexFillStyleBuilder, FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCardModule,
     MatDialogModule,
     MatTooltipModule,
+    FlexLayoutModule
+    
   ],
   providers: [  { provide: MAT_DIALOG_DATA, useValue: {} },
     AuthguardservicesService

@@ -3,6 +3,10 @@ import { NotesServicesService } from 'src/app/Services/NotesServices/notes-servi
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GetarchiveComponent } from '../../getarchive/getarchive/getarchive.component';
+import { GetTrashComponent } from '../../get-trash/get-trash/get-trash.component';
+import { NotesComponent } from '../../Notes/notes/notes.component';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-icons',
   templateUrl: './icons.component.html',
@@ -12,22 +16,36 @@ export class IconsComponent implements OnInit {
 
   colorpanel!: FormGroup;
   @Input() card: any;
-  @Output() onChangeColor = new EventEmitter();
+  isNotesComponent: boolean = false;
+  isArchiveComponent: boolean = false;
+  isTrashComponent: boolean = false;
   op: any
-  @Output() onArchiveChange = new EventEmitter();
   @Output() UpdateNote = new EventEmitter<any>();
   constructor(public noteService: NotesServicesService, @Inject(MAT_DIALOG_DATA) public data: any,
-    private formBuilder: FormBuilder,private snackbar: MatSnackBar) { }
+    private formBuilder: FormBuilder,private snackbar: MatSnackBar, private route: ActivatedRoute) { }
 
 
 
   ngOnInit(): void {
-console.log("card is inicon component", this.card);
+    let componentName = this.route.snapshot.component;
+    if (componentName == NotesComponent)
+    {
+      this.isNotesComponent = true;
+    }
+    if (componentName == GetarchiveComponent)
+    {
+      this.isArchiveComponent = true;
+    }
+    if (componentName == GetTrashComponent)
+    {
+      this.isTrashComponent = true;
+    }
+// console.log("card is inicon component", this.card);
   }
   updateColor(id: any, color: string) {
     console.log(id);
     if (id === undefined) {
-      this.onChangeColor.emit(color);
+      // this.onChangeColor.emit(color);
       console.log("Undeifined Card of color ", color);
     } else {
 
@@ -39,9 +57,9 @@ console.log("card is inicon component", this.card);
       }
       console.log(color);
       this.noteService.updateColor(reqPayload).subscribe((response: any) => {
-        this.op = response.data;
-        window.location.reload();
-        this.UpdateNote.emit(this.op);
+        // this.op = response.data;
+        // window.location.reload();
+        // this.UpdateNote.emit(this.op);
         this.snackbar.open('color changed succesfully', '', { duration: 2000 });
       }, error => {
         console.log('error ', error);
@@ -51,8 +69,10 @@ console.log("card is inicon component", this.card);
   
   deleteNote(note: any) {
     console.log(note);
-    this.noteService.deleteNote(note).subscribe(data => {
+    this.noteService.deleteNote(note).subscribe((response: any) => {
+      this.op = response.data
       window.location.reload()
+      this.UpdateNote.emit(this.op);
     })
   }
   archiveNote() {
@@ -80,3 +100,8 @@ console.log("card is inicon component", this.card);
     })
   }
 }
+
+
+
+
+

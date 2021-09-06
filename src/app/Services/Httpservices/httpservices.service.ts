@@ -153,6 +153,12 @@ export class HttpservicesService {
 
   //delete note
   delete(id: any) {
+    console.log(id);
+    const data = {
+      title: id.title,
+      writtenNote: id.writtenNote
+    }
+    console.log(data);
     let token = localStorage.getItem('FunDooJwt');
     let options = {
       headers: new HttpHeaders({
@@ -160,7 +166,7 @@ export class HttpservicesService {
         'Content-Type': 'application/json'
       }),
     }
-    return this.http.delete(this.baseUrl + `Notes/${id.noteId}`, options);
+    return this.http.delete(this.baseUrl + `Notes/`+id, options);
   }
 }
 
