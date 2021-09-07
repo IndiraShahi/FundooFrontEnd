@@ -85,6 +85,7 @@ export class CreatenoteComponent implements OnInit
     this.createNoteRefersh.emit(message);
     this.title = "";
     this.writtenNote = "";
+    this.colorString ="";
     this.snackBar.open("Note Created Successfully..."," ",{ duration: 2000});
     this.fullEdit = false;
     },

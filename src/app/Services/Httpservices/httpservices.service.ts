@@ -168,6 +168,42 @@ export class HttpservicesService {
     }
     return this.http.delete(this.baseUrl + `Notes/`+id, options);
   }
+  GetAllLabel(url: any) {
+    let token = localStorage.getItem('FunDooJwt');
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + token,
+        'Content-Type': 'application/json'
+      })
+    }
+    return this.http.get(this.baseUrl + url, options);
+  }
+  //get all label
+  CreateLabel(url: any, data: any) {
+    let token = localStorage.getItem('FunDooJwt');
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + token,
+        'Content-Type': 'application/json'
+      })
+    }
+    return this.http.post(this.baseUrl + url, data, options);
+  }
+  //trash note notes
+  DeleteLabel(id: any) {
+    console.log(id);
+
+    let token = localStorage.getItem('FunDooJwt');
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + token,
+        'Content-Type': 'application/json'
+      })
+    }
+    console.log(options);
+    return this.http.put(this.baseUrl + `RemoveLable/${id.LabelId}/Trash`, null, options);
+  }
+
 }
 
   

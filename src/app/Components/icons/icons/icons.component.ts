@@ -57,9 +57,9 @@ export class IconsComponent implements OnInit {
       }
       console.log(color);
       this.noteService.updateColor(reqPayload).subscribe((response: any) => {
-        // this.op = response.data;
-        // window.location.reload();
-        // this.UpdateNote.emit(this.op);
+        this.op = response.data;
+        window.location.reload();
+        this.UpdateNote.emit(this.op);
         this.snackbar.open('color changed succesfully', '', { duration: 2000 });
       }, error => {
         console.log('error ', error);

@@ -3,7 +3,7 @@
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <img src="assets\keep.png" height="40">
+    <img class="logo-image" src="assets\keep.png" height="40">
     <span class="colorfundoo" style="color:#4285F4">F</span>
     <span class="colorfundoo" style="color:#4285F4">un</span>
     <span class="colorfundoo" style="color:#EA4335">doo</span>
@@ -16,7 +16,9 @@
     <!-- Three Icons -->
     <div fxLayout="row" fxLayoutAlign="space-around" style="margin-top: 1%; margin-left:5%">
 
-     
+      <!-- <div fxHide.gt-xs="true">
+        <mat-icon class="material-icons" style="color: #440744">search</mat-icon>
+      </div> -->
       <div ngClass.xs=three-icons-in-header-smaller-screen>
         <mat-icon matTooltip="refresh" class="material-icons" style="color:#767676" (click)=refresh()>refresh
         </mat-icon>
@@ -54,6 +56,7 @@
     </div>
   </mat-toolbar>
   <!-- Search bar in header -->
+
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav opened="true" mode="side" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list (mouseover)="isExpandable=true" (mouseleave)="isExpandable=false">
@@ -71,8 +74,25 @@
           </button>
           <p class="navName " *ngIf="isExpandable">Reminder</p>
         </a>
-        <a class="navlist" fxLayout="row" fxLayoutAlign="start center" (mouseover)="isExpandable=true"
+        <!-- <a class="navlist" fxLayout="row" fxLayoutAlign="start center" (mouseover)="isExpandable=true"
           fxLayoutGap="20px" mat-list-item routerLink="/dashboard">
+          <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </a> -->
+       
+
+        <a class="navlist active" fxLayout="row" (mouseover)="isExpandable=true" fxLayoutAlign="start center"
+          fxLayoutGap="20px" mat-list-item routerLink="/dashboard" *ngFor="let label of labels">
+          <button class="navBtn btnPosition" mat-icon-button>
+            <mat-icon>label</mat-icon>
+          </button>
+          <p class="navName" *ngIf="isExpandable"> {{label.labelName}}</p>
+        </a>
+
+       
+        <a class="navlist" (click)="openDialog(labels)" fxLayout="row" fxLayoutAlign="start center"
+          (mouseover)="isExpandable=true" fxLayoutGap="20px" mat-list-item routerLink="/dashboard">
           <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
             <mat-icon>edit</mat-icon>
           </button>
@@ -97,5 +117,6 @@
 
     <mat-sidenav-content>
       <router-outlet></router-outlet>
-    </mat-sidenav-content></mat-sidenav-container>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

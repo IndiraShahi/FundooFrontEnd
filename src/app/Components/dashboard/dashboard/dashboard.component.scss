@@ -37,7 +37,24 @@ border: 0;
 .mat-drawer-container {
   background-color: #fff !important;
 }
-
+// .search-box-in-header {
+//   margin-left: 6%;
+//   border-radius: 10px;
+//   height: 35px;
+//   width: 50%;
+//   background-color: rgba(213, 207, 233, 0.993);
+//   color: #fff;
+// }
+//  input{ 
+//    height: 35px;
+//     background-color: rgba(213, 207, 233, 0.993);
+//     color:#000;
+//     float: right;
+//     margin-top: 8px;
+//     background: #ddd;
+//     font-size: 17px;
+//     border: none;
+//     cursor: pointer;}
 .three-icons-in-header-bigger-screen {
   margin-left: 30%;
 }
@@ -143,6 +160,15 @@ border: 0;
 .menuBtn , .navBtn{
   transform: all 3s ease;
 }
+.navBtn
+{
+width: 48px;
+height: 48px;
+background-color: #ffffff;
+border: none;
+opacity: 0.7;
+border-radius: 50px;
+}
 
 .navText{
   padding-right: 10px;
@@ -150,13 +176,15 @@ border: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-style:initial;
 }
-.navBtn:hover{
-  color: rgb(255, 255, 255);
-}
+// .navBtn:hover{
+//   color: rgb(255, 255, 255);
+
 .navName{
   font-size: 16px;
   cursor: pointer;
   padding-top: 15px;
+  padding-right: 125px;
+  padding-left: 10px;
 }
 .mat-toolbar {
   background:  #fff;
@@ -255,4 +283,11 @@ dilaog
     .mat-dialog-container{
         padding: 0px;
     } 
+
 }
+.logo-image{
+  margin-right: 10px;
+  margin-left: 20px;
+
+}
+
