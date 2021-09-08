@@ -1,4 +1,4 @@
-<p (click)="GetAllLabel()">get label</p>
+<!-- <p (click)="GetAllLabel()">get label</p> -->
 <div class="header">
     <h4>Edit Labels</h4>
 </div>
@@ -32,7 +32,7 @@
         </button>
     </div>
     <p class="labelName" *ngIf="!editfun" (click)="editfun=!editfun && change=!change"  >
-        {{label.label}}
+        {{label.labelName}}
     </p>
    
     <div class="container " *ngIf="!editfun">

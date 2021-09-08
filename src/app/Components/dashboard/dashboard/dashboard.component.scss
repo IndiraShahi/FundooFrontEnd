@@ -1,141 +1,23 @@
-.sidenav-bigger-screen {
-  width: 20%;
-}
-
-.sidenav-smaller-screen {
-  width: 80%;
-  height: 90%;
-}
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
- }
- .search-container {
-  float: right;
-  padding-left: 150px;
- 
-}
-
- input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  width: 500px;
-  background: #f1f3f4;
-  border: 1px solid transparent;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-  
-}
-
-input[type=text]:hover{
-  box-shadow: 0 0 11px rgba(33,33,33,.52); 
-text-decoration: none;
-border: 0;
-}
-.mat-drawer-container {
-  background-color: #fff !important;
-}
-// .search-box-in-header {
-//   margin-left: 6%;
-//   border-radius: 10px;
-//   height: 35px;
-//   width: 50%;
-//   background-color: rgba(213, 207, 233, 0.993);
-//   color: #fff;
-// }
-//  input{ 
-//    height: 35px;
-//     background-color: rgba(213, 207, 233, 0.993);
-//     color:#000;
-//     float: right;
-//     margin-top: 8px;
-//     background: #ddd;
-//     font-size: 17px;
-//     border: none;
-//     cursor: pointer;}
-.three-icons-in-header-bigger-screen {
-  margin-left: 30%;
-}
-
-.three-icons-in-header-smaller-screen {
-  margin-left: 5%;
-}
-
-.fill-remaining-space {
-  /* This fills the remaining space, by using flexbox.
-     Every toolbar row uses a flexbox row layout. */
-  flex: 1 1 auto;
-}
-
-.log-out-icon {
-  margin-left: 5%;
-}
-
-.sidenav-content {
-  &:hover {
-    background-color: #02aaf8;
-    border-bottom-right-radius: 25px;
-    border-top-right-radius: 25px;
-  }
-}
-
-.search-bar-minimized {
-  height: 5px;
-  border-radius: 10px;
-}
-
-.colorfundoo{
-  font-weight: 550;
-  font-size: 15pt;
-  font-family:'Brush Script MT', cursive;
-}
-.colorfundooF{
-  font-weight: 500;
-  font-size: 30px;
-  font-family: 'Courier New', monospace;
-}
-.complete-search-bar-minimized {
-  margin-top: 2.5%;
-  width: 280px;
-}
-
-.complete-search-bar-maximized {
-  margin-top: 2.5%;
-  width: 50%;
-}
-
-.occupy-full {
-  width: 100%;
-}
-
-.demo {
+.example-container {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  margin-top: 10px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-.color-palette {
-  input {
-    display: none;
-  }
-  &:hover {
-    input {
-      color: white;
-      display: inline-block;
-      border: none;
-      border-radius: 100%;
-      width: 25px;
-      height: 25px;
-      background-color: white;
-      box-shadow: none;
-      padding: 0;
-    }
-    mat-icon {
-      display: none;
-    }
-  }
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
 }
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
 .example-sidenav-container {
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
@@ -147,147 +29,118 @@ border: 0;
      `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
 }
-.navlist:hover{
-  align-items: left;
-   background-color:#FEEFC3;
-   border-radius: 0 20px 20px 0;
 
-  
- }
- .navlist:active{
-  background-color: rgba(236, 222, 96, 0.507);
-}
-.menuBtn , .navBtn{
-  transform: all 3s ease;
-}
-.navBtn
-{
-width: 48px;
-height: 48px;
-background-color: #ffffff;
-border: none;
-opacity: 0.7;
-border-radius: 50px;
-}
-
-.navText{
-  padding-right: 10px;
+.nav-icon-name {
+  padding-right: 125px;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   font-style:initial;
 }
-// .navBtn:hover{
-//   color: rgb(255, 255, 255);
 
-.navName{
-  font-size: 16px;
-  cursor: pointer;
-  padding-top: 15px;
-  padding-right: 125px;
-  padding-left: 10px;
-}
-.mat-toolbar {
-  background:  #fff;
-  color: rgba(200, 187, 247, 0.993);
-  border:#DADCE0 1px solid;
-}
-.mat-fab,
-.mat-flat-button,
-.mat-mini-fab,
-.mat-raised-button {
-  color: white;
-  background-color: #cc0891;
+.navlist:hover {
+   align-items: center;
+   background-color:#FEEFC3;
+   border-radius: 0 20px 20px 0;
+  //  padding: 8px;
+ }
+
+ .navlist:active {
+  background-color: rgba(236, 222, 96, 0.507);
+} 
+
+.btnPosition {
+  margin-left: 10px;
 }
 
-// .mat-drawer-container {
-//   background-color: rgba(213, 207, 233, 0.993);
- 
-// }
-// .mat-drawer {
-//   background-color: rgba(200, 187, 247, 0.993);
-//   color: #fff;
-// }
-.mat-card {
-  background: #ffffff;
-  color: #fff;
-}
-.sideNavText {
-  color: #fff;
-}
-.sidenav-content {
-  color: #fff;
-}
-.next-button{
-  background-color:#fff;
-  color: #e6e6e6;
-  float: right;
-}
-.next-button:hover{
-  background-color:#cc0891;
-  color: #e6e6e6;
-  float: right;
-}
-.mat-divider{
-  border-top-color:#fff;
-}
-::ng-deep .cdk-overlay-pane .profile{
-  min-width:600px;
-}.example-container {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.shadow{
-  -webkit-box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%); 
-  box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%); 
-
-  padding: 10px;
-  box-shadow: 5px 10px;
-}
-.example-is-mobile .example-toolbar {
-  position: fixed;
-  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-  z-index: 2;
+.menuBtn , .nav-button{
+  transform: all 3s ease;
 }
 
-h1.example-app-name {
-  margin-left: 8px;
+.search-container{
+  background: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.164);
+  margin-left: 85px;
 }
 
-.colorfundoo{
-  font-weight: 550;
-  font-size: 15pt;
-  font-family:'Brush Script MT', cursive;
-}
-.colorfundooF{
-  font-weight: 500;
-  font-size: 30px;
-  font-family: 'Courier New', monospace;
+input{
+  width: 615px;
+  border: none;
 }
 
-.mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content
-{
-  padding: 0px;
+.search-input{
+  padding: 11px 0px;
+  margin-right: 57px;
+  outline: none;
 }
 
-dilaog 
-::ng-deep .mat-dialog-container{
-    padding: 0px;
+.search-button{
+  margin: 3px;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #FFFFFF;
 }
 
-.updateDialog{
-    .mat-dialog-container{
-        padding: 0px;
-    } 
-
-}
-.logo-image{
+.upper-button{
+  padding: 8px;
   margin-right: 10px;
-  margin-left: 20px;
-
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color:#FFFFFF;
+  opacity: 0.6;
 }
 
+mat-toolbar, mat-sidenav-content{
+  background-color:#FFFFFF;
+}
+
+.image{
+  margin-left: 45px;
+}
+
+.img-class{
+  height: 32px;
+  width: 32px;
+  padding: 3px;
+}
+
+.side-icons{
+background-color: #FFFFFF;
+border: none;
+}
+
+.nav-button{
+width: 48px;
+height: 48px;
+background-color: #FFFFFF;
+border-radius: 50px;
+border: none;
+opacity: 0.7;
+}
+
+.menu-button{
+width: 48px;
+height: 48px;
+background-color: #FFFFFF;
+border-radius: 40px;
+border: none;
+}
+
+.menu-button:hover{
+background-color: #EFEFEF;
+}
+
+.logo-image{
+margin-left: 20px;
+}
+// .navName{
+//   font-size: 16px;
+//   cursor: pointer;
+//   border: none;
+//   padding-top: 15px;
+//   padding-right: 125px;
+//   padding-left: 10px;
+// }

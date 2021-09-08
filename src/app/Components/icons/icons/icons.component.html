@@ -1,56 +1,100 @@
-<div class="card-bottom" id="bottom">
-    <div class="note-prop" *ngIf="!isTrashComponent">
-  
-      <div class="reminder prop" role="button" matTooltip="Remind me" matTooltipClass="prop-tip"
-        matTooltipPosition='below'></div>
-      <div class="back-img prop" role="button" matTooltip="Add image" matTooltipPosition='below'></div>
-      <div class="back-color prop" [matMenuTriggerFor]="menus" role="button" matTooltip="Change color"
-        matTooltipPosition='below'>
-        <mat-menu #menus="matMenu">
-          <button mat-menu-item>
-  
-            <!-- (click)="deleteNote(note.notesId)" -->
-            <p class="iconcolrcss hite" (click)="updateColor(card.noteId, '#FFFFFF')"></p>
-            <p class="iconcolrcss red" (click)="updateColor(card.noteId, '#F28B82')"></p>
-            <p class="iconcolrcss orange" (click)="updateColor(card.noteId,'#FBBC04')"></p>
-            <p class="iconcolrcss yellow" (click)="updateColor(card.noteId, '#FFF475')"></p>
-            <p class="iconcolrcss green" (click)="updateColor(card.noteId, '#CCFF90')"></p>
-            <p class="iconcolrcss teal" (click)="updateColor(card.noteId, '#A7FFEB')"></p>
-            <p class="iconcolrcss blue" (click)="updateColor(card.noteId, '#CBF0F8')"></p>
-            <p class="iconcolrcss darkblue" (click)="updateColor(card.noteId, '#AECBFA')"></p>
-            <p class="iconcolrcss purple" (click)="updateColor(card.noteId, '#D7AEFB')"></p>
-            <p class="iconcolrcss pink" (click)="updateColor(card.noteId, '#FDCFE8')"></p>
-            <p class="iconcolrcss brown" (click)="updateColor(card.noteId, '#E6C9A8')"></p>
-            <p class="iconcolrcss grey" (click)="updateColor(card.noteId, '#E8EAED')"></p>
-  
+<div>
+  <div *ngIf="!isTrashComponent" class="container">
+      <div class="icons">
+          <button class="buttons" matTooltip="Remind me">
+              <img class="icon" src="../../../assets/notifications_black_24dp.svg" alt="">
           </button>
-        </mat-menu>
-  
       </div>
-      <!-- [card]="note" -->
-      <div class="archive prop" role="button" matTooltip="Archive" (click)="archiveNote()" matTooltipPosition='below'>
+
+      <!-- <div class="icons">
+          <button class="buttons" matTooltip="Collaborator">
+              <img class="icon" src="../../../assets/person_add_alt_black_24dp.svg" alt="">
+          </button>
+      </div> -->
+
+      <div class="icons">
+          <button class="buttons" matTooltip="Change colour" [matMenuTriggerFor]="changeColor">
+              <img class="icon" src="../../../assets/palette_black_24dp.svg" alt="">
+          </button>
       </div>
-  
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon class="iconpadd">more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <!-- (click)="deleteNote(note.notesId)" -->
-          <p (click)="trashNote(card.noteId);">Delete Note</p>
-        </button>
-        <button mat-menu-item disabled>
-          <p>Add Label</p>
-        </button>
+
+      <mat-menu #changeColor="matMenu">
+          <div class="colors">
+              <button mat-menu-item class="icon-color white" matTooltip="White"
+                  (click)="updateColor(card.noteId, '#FFFFFF')"></button>
+              <button mat-menu-item class="icon-color red" matTooltip="Red"
+                  (click)="updateColor(card.noteId, '#F28B82')"></button>
+              <button mat-menu-item class="icon-color orange" matTooltip="Orange"
+                  (click)="updateColor(card.noteId, '#FBBC04')"></button>
+              <button mat-menu-item class="icon-color yellow" matTooltip="Yellow"
+                  (click)="updateColor(card.noteId, '#FFF475')"></button>
+          </div>
+
+          <div class="colors">
+              <button mat-menu-item class="icon-color green" matTooltip="Green"
+                  (click)="updateColor(card.noteId, '#CCFF90')"></button>
+              <button mat-menu-item class="icon-color teal" matTooltip="Teal"
+                  (click)="updateColor(card.noteId, '#A7FFEB')"></button>
+              <button mat-menu-item class="icon-color blue" matTooltip="Blue"
+                  (click)="updateColor(card.noteId, '#CBF0F8')"></button>
+              <button mat-menu-item class="icon-color dark-blue" matTooltip="Dark blue"
+                  (click)="updateColor(card.noteId, '#AECBFA')"></button>
+          </div>
+
+          <div class="colors">
+              <button mat-menu-item class="icon-color purple" matTooltip="Purple"
+                  (click)="updateColor(card.noteId, '#D7AEFB')"></button>
+              <button mat-menu-item class="icon-color pink" matTooltip="Pink"
+                  (click)="updateColor(card.noteId, '#FDCFE8')"></button>
+              <button mat-menu-item class="icon-color brown" matTooltip="Brown"
+                  (click)="updateColor(card.noteId, '#E6C9A8')"></button>
+              <button mat-menu-item class="icon-color grey" matTooltip="Grey"
+                  (click)="updateColor(card.noteId, '#E8EAED')"></button>
+          </div>
       </mat-menu>
-    </div>
-    <div fxLayout="row" *ngIf="isTrashComponent">
+
       <div class="icons">
-        <img class=" iconss prop" (click)="trashNote(card.noteId);" matTooltip="Restore"  src="assets\delete.png" alt="">
+          <button class="buttons" matTooltip="Add image">
+              <img class="icon" src="../../../assets/image_black_24dp.svg" alt="">
+          </button>
       </div>
+
       <div class="icons">
-        <img class="iconss prop" (click)="deleteNote(card.noteId);" matTooltip="Delete Forever"  src="assets\deleteForever.png" alt="">
+          <button class="buttons" (click)="archiveNote()" *ngIf="!isArchiveComponent" matTooltip="Archive">
+              <img class="icon" src="../../../assets/archive_black_24dp.svg" alt="">
+          </button>
       </div>
-  
-    </div>
+
+      <div>
+          <button class="buttons" (click)="archiveNote()" *ngIf="isArchiveComponent" matTooltip="Unarchive">
+              <img class="icons" src="../../../assets/unarchive_black_24dp.svg" alt="">
+          </button>
+      </div>
+
+      <div class="icons">
+          <button class="menu-icon" mat-icon-button [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu" matTooltip="More">
+              <mat-icon>more_vert</mat-icon>
+          </button>
+      </div>
+
+      <mat-menu #menu="matMenu">
+
+          <button mat-menu-item>
+              <span (click)="trashNote(card.noteId)">Delete note</span>
+          </button>
+
+      </mat-menu>
   </div>
+
+  <div *ngIf="isTrashComponent" fxLayout="row">
+      <div class="buttons" (click)="deleteNote(card.noteId)" matTooltip="Delete forever">
+          <img class="icons" src="../../../assets/delete_forever_black_24dp.svg" alt="">
+      </div>
+
+      <div class="buttons" (click)="trashNote(card.noteId)" matTooltip="Restore">
+          <img class="icons" src="../../../assets/restore_from_trash_black_24dp.svg" alt="">
+      </div>
+  </div>
+
+</div>

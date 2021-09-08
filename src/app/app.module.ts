@@ -56,6 +56,7 @@ import { LabelComponent } from './Components/label/label/label.component';
     DialogueContentComponent,
     LabelComponent,
     
+    
   ],
   imports: [
     BrowserModule,

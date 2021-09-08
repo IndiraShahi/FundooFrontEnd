@@ -42,6 +42,11 @@ export class DashboardComponent implements  OnDestroy, OnInit{
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+  search(data: any)
+  {
+    console.log(data)
+    this.data.sendMessage(data);
+  }
   GetAllLabel() {
     this.label.GetAllLabel('Notes/GetLabel').subscribe((response: any) => {
       this.labels=response.data;

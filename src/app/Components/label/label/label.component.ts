@@ -17,12 +17,13 @@ export class LabelComponent implements OnInit {
   editfun = false;
   labelsList: any = []
   labelForm!: FormGroup;
+  labels : any;
   private createlabel = new FormControl('');
 
   constructor(private labelService: LabelservicesService,
     private dataservice: DataServicesService,
     private matSnackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public labels: any,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     @Optional() private dialogRef: MatDialogRef<DashboardComponent>, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class LabelComponent implements OnInit {
     this.dataservice.recievedMessage.subscribe(response => {
       this.labels = response;
     });
+    this.labels = this.data;
   }
   cleartext() {
     return this.labelForm.controls['labelName'].setValue('');
@@ -42,13 +44,13 @@ export class LabelComponent implements OnInit {
 
   }
 
-  GetAllLabel() {
-    this.labelService.GetAllLabel('Notes/GetLabel').subscribe((response: any) => {
-      this.labels=response.data;
-    console.log(response)
-    // this.data.sendMessage(this.labels);
-      })
-  }
+  // GetAllLabel() {
+  //   this.labelService.GetAllLabel('Notes/GetLabel').subscribe((response: any) => {
+  //     this.labels=response.data;
+  //   console.log(response)
+  //   // this.data.sendMessage(this.labels);
+  //     })
+  // }
 
 
   createOneLabel() {

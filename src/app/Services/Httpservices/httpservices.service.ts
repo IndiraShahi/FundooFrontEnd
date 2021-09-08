@@ -190,8 +190,8 @@ export class HttpservicesService {
     return this.http.post(this.baseUrl + url, data, options);
   }
   //trash note notes
-  DeleteLabel(id: any) {
-    console.log(id);
+  DeleteLabel(url: any) {
+    console.log(url);
 
     let token = localStorage.getItem('FunDooJwt');
     let options = {
@@ -200,8 +200,8 @@ export class HttpservicesService {
         'Content-Type': 'application/json'
       })
     }
-    console.log(options);
-    return this.http.put(this.baseUrl + `RemoveLable/${id.LabelId}/Trash`, null, options);
+    // console.log(options);
+    return this.http.put(this.baseUrl + url , options);
   }
 
 }
