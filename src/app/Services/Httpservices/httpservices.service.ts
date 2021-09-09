@@ -201,7 +201,7 @@ export class HttpservicesService {
       })
     }
     // console.log(options);
-    return this.http.put(this.baseUrl + url , options);
+    return this.http.delete(this.baseUrl + url , options);
   }
 
 }
