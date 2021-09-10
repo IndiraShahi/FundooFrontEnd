@@ -5,7 +5,6 @@
   #title,#description{ 
      text-overflow:ellipsis;
     overflow:hidden;
-    // Addition lines for 2 line or multiline ellipsis
     display: -webkit-box !important;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -30,12 +29,9 @@
   }
   .card:hover {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    //visibility:visible;
   }
   .card-bottom {
-    // display: flex;
-    // width: inherit;
-    // justify-content: space-between;
+    
     visibility: hidden;
   
   }

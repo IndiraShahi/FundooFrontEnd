@@ -3,6 +3,7 @@ import { NotesServicesService } from 'src/app/Services/NotesServices/notes-servi
 import { FormBuilder , FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DataServicesService } from 'src/app/Services/data-services.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dialogue-content',
@@ -10,97 +11,62 @@ import { DataServicesService } from 'src/app/Services/data-services.service';
   styleUrls: ['./dialogue-content.component.scss']
 })
 export class DialogueContentComponent implements OnInit {
-
-  cardUpdateForm!: FormGroup;
-  op: any
-  pin: boolean = false;
-  @Output() UpdateNote = new EventEmitter<any>();
-  notesArray: any;
+  cardForm!: FormGroup;
+  output: any;
   color: any
-
+  @Output() messageEvent = new EventEmitter<any>();
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
-    private noteService: NotesServicesService,private dataservice: DataServicesService
-  )
-   {
+    private noteService: NotesServicesService,
+    private _snackBar: MatSnackBar,
+    private dataService: DataServicesService
+  ) 
+  {
     console.log(data);
-    this.color = '#'.concat(data.color)
-    console.log(this.color);
-    }
+     this.color = '#'.concat(data.color)
+     console.log(this.color);
+  }
 
   ngOnInit(): void {
-    this.cardUpdateForm = this.formBuilder.group({
-      noteId: this.data.noteId,
+    this.cardForm = this.formBuilder.group({
       title: this.data.title,
       writtenNote: this.data.writtenNote
     })
   }
-  updateNote(data: any) {
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'OK', {
+    });
+  }
+
+  updateNote() {
     let reqPayload = {
-      noteId: this.cardUpdateForm.value.noteId,
-      title: this.cardUpdateForm.value.title,
-      writtenNote: this.cardUpdateForm.value.writtenNote
+      noteId: this.data.noteId,
+      title: this.cardForm.value.title,
+      writtenNote: this.cardForm.value.writtenNote,
+      color:this.data.color
     }
-    //new trash function rhega like  UpdateExistingNote usme sirf note id pass krna  "NotesId: this.cardUpdateForm.value.notesId"
     this.noteService.UpdateExistingNote(reqPayload).subscribe((response: any) => {
-      this.op = response.data;
-      this.dataservice.sendMessage(this.op)
-    })
-
-  }
-  
-  refreshNotes(value:any ){
-    console.log(value);
-   // this.UpdateNote();
+      this.output = response;
+      this.openSnackBar(this.output.message);
+      this.dataService.sendMessage(this.output.data);
+    },
+      (      error: { message: string; }) => {
+        this.openSnackBar(error.message);
+      })
   }
 
-  updateColor(id: any, color: string) {
-    let reqPayload = {
-      noteId: id,
-      color: color
+  bgColor() {
+    return {
+      'bgred': this.data.color == "#e75f5f",
+      'bgwhite': this.data.color == '#ffffff' || this.data.color == null,
+      'bggreen': this.data.color == '#65e665',
+      'bgyellow': this.data.color == '#e7da65',
+      'bgpink': this.data.color == '#ee6ce3',
+      'bgpurple': this.data.color == '#be7aeb',
+      'bgorange': this.data.color == '#e28011',
+      'bggray': this.data.color == '#c3c0c086',
+      'bgblue': this.data.color == '#5eadee'
     }
-    console.log(reqPayload);
-    this.noteService.updateColor(reqPayload).subscribe((response: any) => {
-      this.op = response.data;
-      console.log(this.op);
-      window.location.reload();
-      //this.updateColor.emit(this.op);
-    })
-  }
-  GetAllNotes() {
-    this.noteService.GetAllNotes('Notes').subscribe((response: any) => {
-      console.log(response);
-      this.notesArray = response.data;
-      this.notesArray.reverse();
-      console.log(this.notesArray);
-
-    }
-    )
-  }
-  //Call this function on trash icon u r done
-  trashNote(data:any) {
-    console.log(data,'------');
-    let reqPayload = {
-      noteId: this.cardUpdateForm.value.noteId,   
-    }
-    this.noteService.trashNote(reqPayload).subscribe((response: any) => {
-      this.op = response.data;
-      window.location.reload();
-      this.UpdateNote.emit(this.op);
-    })
-  }
-   
-   archiveNote() {
-    let reqPayload = {
-      noteId: this.cardUpdateForm.value.noteId,
-    }
-    this.noteService.archiveNote(reqPayload).subscribe((response: any) => {
-      this.op = response.data;
-      window.location.reload();
-      this.UpdateNote.emit(this.op);
-    })
-  }
-  togglePin(){
-    this.pin =!this.pin;
   }
 }

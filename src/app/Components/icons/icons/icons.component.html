@@ -21,35 +21,35 @@
       <mat-menu #changeColor="matMenu">
           <div class="colors">
               <button mat-menu-item class="icon-color white" matTooltip="White"
-                  (click)="updateColor(card.noteId, '#FFFFFF')"></button>
+                  (click)="updateColor(card, '#FFFFFF')"></button>
               <button mat-menu-item class="icon-color red" matTooltip="Red"
-                  (click)="updateColor(card.noteId, '#F28B82')"></button>
+                  (click)="updateColor(card, '#F28B82')"></button>
               <button mat-menu-item class="icon-color orange" matTooltip="Orange"
-                  (click)="updateColor(card.noteId, '#FBBC04')"></button>
+                  (click)="updateColor(card, '#FBBC04')"></button>
               <button mat-menu-item class="icon-color yellow" matTooltip="Yellow"
-                  (click)="updateColor(card.noteId, '#FFF475')"></button>
+                  (click)="updateColor(card, '#FFF475')"></button>
           </div>
 
           <div class="colors">
               <button mat-menu-item class="icon-color green" matTooltip="Green"
-                  (click)="updateColor(card.noteId, '#CCFF90')"></button>
+                  (click)="updateColor(card, '#CCFF90')"></button>
               <button mat-menu-item class="icon-color teal" matTooltip="Teal"
-                  (click)="updateColor(card.noteId, '#A7FFEB')"></button>
+                  (click)="updateColor(card, '#A7FFEB')"></button>
               <button mat-menu-item class="icon-color blue" matTooltip="Blue"
-                  (click)="updateColor(card.noteId, '#CBF0F8')"></button>
+                  (click)="updateColor(card, '#CBF0F8')"></button>
               <button mat-menu-item class="icon-color dark-blue" matTooltip="Dark blue"
-                  (click)="updateColor(card.noteId, '#AECBFA')"></button>
+                  (click)="updateColor(card, '#AECBFA')"></button>
           </div>
 
           <div class="colors">
               <button mat-menu-item class="icon-color purple" matTooltip="Purple"
-                  (click)="updateColor(card.noteId, '#D7AEFB')"></button>
+                  (click)="updateColor(card, '#D7AEFB')"></button>
               <button mat-menu-item class="icon-color pink" matTooltip="Pink"
-                  (click)="updateColor(card.noteId, '#FDCFE8')"></button>
+                  (click)="updateColor(card, '#FDCFE8')"></button>
               <button mat-menu-item class="icon-color brown" matTooltip="Brown"
-                  (click)="updateColor(card.noteId, '#E6C9A8')"></button>
+                  (click)="updateColor(card, '#E6C9A8')"></button>
               <button mat-menu-item class="icon-color grey" matTooltip="Grey"
-                  (click)="updateColor(card.noteId, '#E8EAED')"></button>
+                  (click)="updateColor(card, '#E8EAED')"></button>
           </div>
       </mat-menu>
 
@@ -72,16 +72,18 @@
       </div>
 
       <div class="icons">
-          <button class="menu-icon" mat-icon-button [matMenuTriggerFor]="menu"
-              aria-label="Example icon-button with a menu" matTooltip="More">
-              <mat-icon>more_vert</mat-icon>
+          <button matTooltip="More" class="my-button" [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
           </button>
-      </div>
+        </div>
 
       <mat-menu #menu="matMenu">
 
           <button mat-menu-item>
               <span (click)="trashNote(card.noteId)">Delete note</span>
+          </button>
+          <button mat-menu-item disabled>
+            <p>Add Label</p>
           </button>
 
       </mat-menu>

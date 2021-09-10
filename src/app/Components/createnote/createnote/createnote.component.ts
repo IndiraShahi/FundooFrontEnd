@@ -31,7 +31,6 @@ export class CreatenoteComponent implements OnInit
   purple = "";
   grey = "";
   colorString:any
-  //@Output() createNoteRefersh = new EventEmitter;
   click() {
     this.isOpen = true;
   }
@@ -39,14 +38,15 @@ export class CreatenoteComponent implements OnInit
    @Output() createNoteRefersh = new EventEmitter<string>();
 
   ngOnInit(): void {
-    // this.token = this.activeRoute.snapshot.paramMap.get('token');
-
   }
-  receivecolor($event: any) {
-    console.log(" event in ");
-    this.Color = $event;
+  receivecolor(value: any) {
+    console.log(" event in ",value);
+    this.Color = value;
   }
-
+  Color(colorCode: any) {
+    this.colorString = colorCode
+    console.log(colorCode);
+  }
   getColor() {
     return {
       'bg-red': this.colorString === '#E75F5F',
@@ -59,10 +59,6 @@ export class CreatenoteComponent implements OnInit
       'bg-purple': this.colorString === '#BEE7AEB',
       'bg-grey': this.colorString === '#C3C0C086'
     }
-  }
-  Color(colorCode: any) {
-    this.colorString = colorCode
-    console.log(colorCode);
   }
 
   addNote() {

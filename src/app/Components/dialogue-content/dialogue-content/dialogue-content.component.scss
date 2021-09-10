@@ -26,7 +26,6 @@
       }
       
       .my-button:hover {
-        // background-color: rgba(153, 147, 147, 0.5);
         background-color: transparent;
       }
   .font{
@@ -54,7 +53,6 @@
   
   
   .card-bottom{
-    //  display: none  !important;
       padding-top: 44px;
       padding-bottom:4px;
       display: flex;
@@ -66,7 +64,6 @@
       flex: 1 0 auto;
      display: flex;
      flex-direction: row;
-     //color: adjust-color($color: #000000, $red: 1, $green: 2, $blue: 3, $hue: 0, $saturation: 0%, $lightness: 0%, $alpha: 1.0);
   }
   .close-note:hover{
       background-color: rgb(233, 233, 233);
@@ -89,7 +86,7 @@
       padding: 8px 24px;
       -webkit-border-radius: 4px;
       border-radius: 4px;
-      //border-radius: 10px;
+      
   }
   .reminder{
       background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjMDAwIj4KICA8cGF0aCBkPSJNMTMgOWgtMnYySDl2MmgydjJoMnYtMmgydi0yaC0yeiIvPgogIDxwYXRoIGQ9Ik0xOCAxN3YtNmMwLTMuMDctMS42My01LjY0LTQuNS02LjMyVjRjMC0uODMtLjY3LTEuNS0xLjUtMS41cy0xLjUuNjctMS41IDEuNXYuNjhDNy42NCA1LjM2IDYgNy45MiA2IDExdjZINHYyaDE2di0yaC0yem0tMiAwSDh2LTZjMC0yLjQ4IDEuNTEtNC41IDQtNC41czQgMi4wMiA0IDQuNXY2em0tNCA1YzEuMSAwIDItLjkgMi0yaC00YzAgMS4xLjkgMiAyIDJ6Ii8+Cjwvc3ZnPgo=);
@@ -107,7 +104,7 @@
   .back-color{
       background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjMDAwIj4KICA8cGF0aCBkPSJNMTIgMjJDNi40OSAyMiAyIDE3LjUxIDIgMTJTNi40OSAyIDEyIDJzMTAgNC4wNCAxMCA5YzAgMy4zMS0yLjY5IDYtNiA2aC0xLjc3Yy0uMjggMC0uNS4yMi0uNS41IDAgLjEyLjA1LjIzLjEzLjMzLjQxLjQ3LjY0IDEuMDYuNjQgMS42N0EyLjUgMi41IDAgMCAxIDEyIDIyem0wLTE4Yy00LjQxIDAtOCAzLjU5LTggOHMzLjU5IDggOCA4Yy4yOCAwIC41LS4yMi41LS41YS41NC41NCAwIDAgMC0uMTQtLjM1Yy0uNDEtLjQ2LS42My0xLjA1LS42My0xLjY1YTIuNSAyLjUgMCAwIDEgMi41LTIuNUgxNmMyLjIxIDAgNC0xLjc5IDQtNCAwLTMuODYtMy41OS03LTgtN3oiLz48Y2lyY2xlIGN4PSI2LjUiIGN5PSIxMS41IiByPSIxLjUiLz4KICA8Y2lyY2xlIGN4PSI5LjUiIGN5PSI3LjUiIHI9IjEuNSIvPjxjaXJjbGUgY3g9IjE0LjUiIGN5PSI3LjUiIHI9IjEuNSIvPjxjaXJjbGUgY3g9IjE3LjUiIGN5PSIxMS41IiByPSIxLjUiLz4KPC9zdmc+Cg==);
     }
-    //add delete icon in below url
+
     .delete{
       background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjMDAwIj4KICA8cGF0aCBkPSJNMTIgMjJDNi40OSAyMiAyIDE3LjUxIDIgMTJTNi40OSAyIDEyIDJzMTAgNC4wNCAxMCA5YzAgMy4zMS0yLjY5IDYtNiA2aC0xLjc3Yy0uMjggMC0uNS4yMi0uNS41IDAgLjEyLjA1LjIzLjEzLjMzLjQxLjQ3LjY0IDEuMDYuNjQgMS42N0EyLjUgMi41IDAgMCAxIDEyIDIyem0wLTE4Yy00LjQxIDAtOCAzLjU5LTggOHMzLjU5IDggOCA4Yy4yOCAwIC41LS4yMi41LS41YS41NC41NCAwIDAgMC0uMTQtLjM1Yy0uNDEtLjQ2LS42My0xLjA1LS42My0xLjY1YTIuNSAyLjUgMCAwIDEgMi41LTIuNUgxNmMyLjIxIDAgNC0xLjc5IDQtNCAwLTMuODYtMy41OS03LTgtN3oiLz48Y2lyY2xlIGN4PSI2LjUiIGN5PSIxMS41IiByPSIxLjUiLz4KICA8Y2lyY2xlIGN4PSI5LjUiIGN5PSI3LjUiIHI9IjEuNSIvPjxjaXJjbGUgY3g9IjE0LjUiIGN5PSI3LjUiIHI9IjEuNSIvPjxjaXJjbGUgY3g9IjE3LjUiIGN5PSIxMS41IiByPSIxLjUiLz4KPC9zdmc+Cg==);
     }
@@ -124,7 +121,6 @@
       background-position: center;
   }
   .prop:hover{
-    //   background-color: rgba(0,0,0,.15);
     background-color: transparent;
   }
   
@@ -177,9 +173,7 @@
       white-space: pre-wrap;
       word-wrap: break-word;
   }
-  // .mat-card{
-  //     padding: 0;
-  // }
+ 
   .pin{
       background-repeat: no-repeat;
       background-size: 24px 32px;
@@ -194,7 +188,6 @@
       background-size: 24px 32px;
   }
   .pin-div{
-   //   margin-top: 7px;
       margin-right: 15px;
       height: 30px;
       width: 24px;
@@ -208,7 +201,6 @@
       border-radius: 50%;
   }
   .pin-div:hover{
-    //   background-color: rgb(209, 209, 209);
     background-color: transparent;
   }
   
@@ -216,7 +208,6 @@
   .card-title{
       display: flex;
       flex-direction: row;
-    //  display: none;
   }
   .mat-tooltip.prop-tip {
       width: fit-content;
@@ -234,16 +225,8 @@
       } 
   }
   .img-upload:hover{
-    //   background-color: rgba(0,0,0,.15);
     background-color: transparent;
   }
-  // .mat-card:not([class*=mat-elevation-z]) {
-  //     /* box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
-  // }
-  
-  // .mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
-  //   margin-bottom: 8px;
-  // }
   
   .iconpadd{padding-bottom: 7px;}
   
@@ -277,3 +260,4 @@
     .brown{background-color:#E6C9A8;
     }
     .grey{background-color:#E8EAED;}
+    

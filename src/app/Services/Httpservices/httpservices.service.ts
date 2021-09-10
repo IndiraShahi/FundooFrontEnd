@@ -147,7 +147,7 @@ export class HttpservicesService {
       })
     }
     
-    return this.http.put(this.baseUrl + `Notes/AddColor?noteId=${data.noteId}&color=${color.replace('#','')}`,data, options);
+    return this.http.put(this.baseUrl + `Notes/AddColor?noteId=${id.noteId}&color=${color.replace('#','')}`,data, options);
   }
 
 
@@ -202,6 +202,22 @@ export class HttpservicesService {
     }
     // console.log(options);
     return this.http.delete(this.baseUrl + url , options);
+  }
+  
+  UpdateLabel(url:any, data:any){
+    console.log(data)
+   const labelId=data.labelId;
+   const labelName=data.labelName;
+
+    let token = localStorage.getItem('FunDooJwt');
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': "Bearer " + token,
+        'Content-Type': 'application/json'
+      })
+    }
+    
+    return this.http.put(this.baseUrl+url,data, options);
   }
 
 }

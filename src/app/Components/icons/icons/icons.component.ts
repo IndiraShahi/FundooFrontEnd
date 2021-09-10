@@ -21,6 +21,7 @@ export class IconsComponent implements OnInit {
   isTrashComponent: boolean = false;
   op: any
   @Output() UpdateNote = new EventEmitter<any>();
+  @Output() onChangeColor = new EventEmitter<any>();
   constructor(public noteService: NotesServicesService, @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,private snackbar: MatSnackBar, private route: ActivatedRoute) { }
 
@@ -40,13 +41,12 @@ export class IconsComponent implements OnInit {
     {
       this.isTrashComponent = true;
     }
-// console.log("card is inicon component", this.card);
   }
   updateColor(id: any, color: string) {
     console.log(id);
     if (id === undefined) {
-      // this.onChangeColor.emit(color);
-      console.log("Undeifined Card of color ", color);
+       this.onChangeColor.emit(color);
+      console.log("Undefined Card of color ", color);
     } else {
 
       console.log(id, color);
