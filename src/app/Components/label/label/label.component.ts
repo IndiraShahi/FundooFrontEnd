@@ -18,6 +18,7 @@ export class LabelComponent implements OnInit {
   labelsList: any = []
   labelForm!: FormGroup;
   labels : any;
+  editableLabel:any;
   private createlabel = new FormControl('');
 
   constructor(private labelService: LabelservicesService,
@@ -83,6 +84,26 @@ export class LabelComponent implements OnInit {
       },
       error => {
         this.matSnackBar.open('Error label updation failed.', 'close')._dismissAfter(2000);
+        console.log(error);
+      }
+    );
+  }
+  BindValue(editableLabel: any)
+  {
+    this.editableLabel = editableLabel;
+  }
+  editLabel(label: any)
+  {
+    let reqData = {
+      labelId: label.labelId,
+      LableName: this.editableLabel
+    }
+    this.labelService.UpdateLabel(reqData).subscribe(response => 
+    {
+      console.log(response);
+    },
+      error =>
+      {
         console.log(error);
       }
     );

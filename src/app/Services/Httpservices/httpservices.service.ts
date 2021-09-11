@@ -219,7 +219,6 @@ export class HttpservicesService {
     
     return this.http.put(this.baseUrl+url,data, options);
   }
-
 }
 
   

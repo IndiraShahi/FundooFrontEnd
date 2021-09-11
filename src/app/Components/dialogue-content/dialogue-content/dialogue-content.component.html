@@ -15,7 +15,8 @@
     <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
       <div class="card-bottom" id="bottom">
         <app-icons [card]="data"></app-icons>
-      <p class="button" style="padding-left: 150px ;"> <button mat-button formControlName="noteId" mat-dialog-close
-          (click)="updateNote()">Close</button></p>
+        <p fxLayout="row">
+          <button class="button" mat-button formControlName="noteId" (click)="updateNote()" [style.background-color]=color>Close</button>
+        </p>
     </div>
   

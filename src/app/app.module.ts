@@ -36,6 +36,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FlexFillStyleBuilder, FlexLayoutModule } from '@angular/flex-layout';
 import { LabelComponent } from './Components/label/label/label.component';
+import { CollaboratorComponent } from './Components/Collaborator/collaborator/collaborator.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { LabelComponent } from './Components/label/label/label.component';
     IconsComponent,
     DialogueContentComponent,
     LabelComponent,
+    CollaboratorComponent,
     
     
   ],

@@ -20,7 +20,7 @@
             <app-icons (onChangeColor)="receivecolor($event)"></app-icons>
         </div>
         <div fxLayout="row">
-            <button class="close-note" mat-button (click)="addNote()">Close</button>
+            <button class="close-note" mat-button (click)="addNote()" [style.background-color]=Color>Close</button>
           </div>
     </mat-card>
 </div>
